@@ -34,7 +34,7 @@ class fileHandler:
             print("Could not open the file")
             return False
 
-class loraWANFileHandler(fileHandler):
+class loraWanPlatfom(fileHandler):
     #these are LoraWan end node related configuration  and TX send commands
 
     MacSet = "mac set "

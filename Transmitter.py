@@ -1,10 +1,10 @@
-from EndNodeInitialization import loraWANFileHandler
+from EndNodeInitialization import loraWanPlatfom
 from EndNodeInitialization import fileHandler
 from EndNodeInterface import LoraWan
 
 def main():
 
-    platForm = loraWANFileHandler()
+    platForm = loraWanPlatfom()
     #create transmit and initializaiotn files if they do not exists
     platForm.createLoraWanTransmitlist()
     platForm.createInitList()

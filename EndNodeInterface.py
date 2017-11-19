@@ -3,9 +3,10 @@ import serial
 class EndNode:
 
     def write(self, string):
+        return True
 
 class LoraWan:
-
+    # this must be asked first in the start up
     Port = '/dev/ttyACM0'
     __loraWamCom = serial()
     def __init__(self, ):
