@@ -1,4 +1,4 @@
-import time
+import os
 import pickle
 
 class fileHandler:
@@ -10,10 +10,10 @@ class fileHandler:
     sendCount = 10
     payLoadLenght = 10
     startTime = ""
-    isDutyCycleOn = false
+    isDutyCycleOn = False
 
     def dutyCycleOn():
-        #create dutyCycle calcutalion here
+        #create dutyCycle calculation here
         return False
 
 
@@ -25,10 +25,10 @@ class fileHandler:
         except IOError:
             print(errorString)
             source = open(name, 'wb')
-            pickle.dump(dump, source)
+            pickle.d
             return source
 
-class loraWANTxListHandler(fileHandler):
+class loraWANFileHandler(fileHandler):
     #these are LoraWan end node related configuration  and TX send commands
     #
 
@@ -42,12 +42,13 @@ class loraWANTxListHandler(fileHandler):
     DevEui = "deveui 0004A30B001F3A95"
     macSave = "mac save"
     RLF = "\r\n"
+    initFileName = "LPWAinitfile.dat"
+    transmitFileName = "LPWATransmitfile.dat"
 
     def commandIndex(self):
-
         fileHandler.commandIndex = "START_TIME" "SEND_INTERVAL" "SEND_COUNT" "PAYLOAD_LENGHT" "TX_COMMAND""LINE_FEED"
 
-    def  createLoraWanTransmitFile(self):
+    def createLoraWanTransmitlist(self):
         #creating list
         fileHandler.transmitterList.append(fileHandler.startTime)
         fileHandler.transmitterList.append(fileHandler.sendInterval)
@@ -62,5 +63,19 @@ class loraWANTxListHandler(fileHandler):
         fileHandler.initList.append(self.MacSet + self.Appkey + self.RLF)
         fileHandler.initList.append(self.MacSet + self.DevEui + self.RLF)
         fileHandler.initList.append(self.macSave + self.RLF)
+
+    def createInitializationFile(self):
+        if not os.path.exists(self.initFileName):
+            self.createInitList()
+            source = open(self.initFileName, 'wb')
+            pickle.dump(self.createInitList(), source)
+            source.close()
+
+    def createTransmitFile(self):
+        if not os.path.exists(self.transmitFileName):
+            self.createLoraWanTransmitlist()
+            source = open(self.transmitFileName, 'wb')
+            pickle.dump(self.createLoraWanTransmitlist(), source)
+            source.close()
 
 #class NBiotTransmitterList
