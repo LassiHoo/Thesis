@@ -16,21 +16,26 @@ class fileHandler:
         #create dutyCycle calculation here
         return False
 
+    def readfile(self,filename):
+        try:
+            file = open(filename, "rb")
+            read = pickle.load(file)
+            return read
+        except IOError:
+            print("Could not open the file")
+            return False
 
-    def fileHandleOpen(name, RW, errorString, dump):
+    def fileHandleOpen(name):
         #opens a transmitter or initialization file
         try:
-            source = open(name, RW)
+            source = open(name, "rw")
             return source
         except IOError:
-            print(errorString)
-            source = open(name, 'wb')
-            pickle.d
-            return source
+            print("Could not open the file")
+            return False
 
 class loraWANFileHandler(fileHandler):
     #these are LoraWan end node related configuration  and TX send commands
-    #
 
     MacSet = "mac set "
     MacTx = "mac tx "
@@ -67,15 +72,15 @@ class loraWANFileHandler(fileHandler):
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
             self.createInitList()
-            source = open(self.initFileName, 'wb')
-            pickle.dump(self.createInitList(), source)
+            source = open(self.initFileName)
+            pickle.dump(fileHandler.initList, source)
             source.close()
 
     def createTransmitFile(self):
         if not os.path.exists(self.transmitFileName):
             self.createLoraWanTransmitlist()
-            source = open(self.transmitFileName, 'wb')
-            pickle.dump(self.createLoraWanTransmitlist(), source)
+            source = open(self.transmitFileName)
+            pickle.dump(fileHandler.transmitterList, source)
             source.close()
 
 #class NBiotTransmitterList
