@@ -1,24 +1,16 @@
 from EndNodeInitialization import loraWanPlatfom
-from EndNodeInitialization import fileHandler
+from EndNodeInitialization import basePlatform
 from EndNodeInterface import LoraWan
+import sys
 
 def main():
-
-    platForm = loraWanPlatfom()
-    #create transmit and initializaiotn files if they do not exists
-    platForm.createLoraWanTransmitlist()
-    platForm.createInitList()
-    Init=fileHandler()
-    trasmitcommands = Init.readfile(platForm.transmitFileName)
-    initcommands = Init.readfile(platForm.initFileName)
+    transmitSettings = basePlatform()
     endnodeInterFace = LoraWan()
+    endnodeInterFace.initInterface()
 
-    for i in initcommands:
-        endnodeInterFace.write(i)
-
-
-
-
+    for i in transmitSettings.sendCount:
+        sleep (transmitSettings.sendInterval)
+        endnodeInterFace.transmit("testi")
 
 
 if __name__ == "__main__":

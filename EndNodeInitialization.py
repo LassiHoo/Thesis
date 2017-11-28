@@ -1,7 +1,7 @@
 import os
 import pickle
 
-class fileHandler:
+class basePlatform:
 
     transmitterList = []
     initList=[]
@@ -34,7 +34,7 @@ class fileHandler:
             print("Could not open the file")
             return False
 
-class loraWanPlatfom(fileHandler):
+class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX send commands
 
     MacSet = "mac set "
@@ -51,36 +51,36 @@ class loraWanPlatfom(fileHandler):
     transmitFileName = "LPWATransmitfile.dat"
 
     def commandIndex(self):
-        fileHandler.commandIndex = "START_TIME" "SEND_INTERVAL" "SEND_COUNT" "PAYLOAD_LENGHT" "TX_COMMAND""LINE_FEED"
+        basePlatform.commandIndex = "START_TIME" "SEND_INTERVAL" "SEND_COUNT" "PAYLOAD_LENGHT" "TX_COMMAND""LINE_FEED"
 
     def createLoraWanTransmitlist(self):
         #creating list
-        fileHandler.transmitterList.append(fileHandler.startTime)
-        fileHandler.transmitterList.append(fileHandler.sendInterval)
-        fileHandler.transmitterList.append(fileHandler.sendCount)
-        fileHandler.transmitterList.append(fileHandler.payLoadLenght)
-        fileHandler.transmitterList.append(self.MacTx + self.portnr )
-        fileHandler.transmitterList.append(self.RLF)
+        basePlatform.transmitterList.append(basePlatform.startTime)
+        basePlatform.transmitterList.append(basePlatform.sendInterval)
+        basePlatform.transmitterList.append(basePlatform.sendCount)
+        basePlatform.transmitterList.append(basePlatform.payLoadLenght)
+        basePlatform.transmitterList.append(self.MacTx + self.portnr)
+        basePlatform.transmitterList.append(self.RLF)
 
     def createInitList(self):
         #creating init list
-        fileHandler.initList.append(self.MacSet + self.Appeui + self.RLF )
-        fileHandler.initList.append(self.MacSet + self.Appkey + self.RLF)
-        fileHandler.initList.append(self.MacSet + self.DevEui + self.RLF)
-        fileHandler.initList.append(self.macSave + self.RLF)
+        basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
+        basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
+        basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
+        basePlatform.initList.append(self.macSave + self.RLF)
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
             self.createInitList()
             source = open(self.initFileName)
-            pickle.dump(fileHandler.initList, source)
+            pickle.dump(basePlatform.initList, source)
             source.close()
 
     def createTransmitFile(self):
         if not os.path.exists(self.transmitFileName):
             self.createLoraWanTransmitlist()
             source = open(self.transmitFileName)
-            pickle.dump(fileHandler.transmitterList, source)
+            pickle.dump(basePlatform.transmitterList, source)
             source.close()
 
 #class NBiotTransmitterList
