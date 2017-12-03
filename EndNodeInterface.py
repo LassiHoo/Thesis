@@ -24,15 +24,15 @@ class LoraWan:
 
         self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
         for i in self.__transmitcommands:
-            print "transmit commands number, ",i, "and content",self.__transmitcommands[i]
+            print i
         self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
         for i in self.__initcommands:
-            print "transmit commands number, ",i, "and content",self.__initcommands[i]
+            print i
 
     def transmit(self,string):
         self.__loraWanCom.write(self.__transmitcommands[4] + string + self.__transmitcommands[5])
 
     def initInterface(self):
         for i in self.__initcommands:
-            self.__loraWamCom.write(self.__initcommands[i])
+            self.__loraWamCom.write(i)
 
