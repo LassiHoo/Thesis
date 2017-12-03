@@ -29,7 +29,7 @@ class LoraWan:
     def transmit(self,string):
         self.__loraWanCom.write(self.__transmitcommands[4] + string + self.__transmitcommands[5])
 
-    def initInterface(self):
-        for i in self.__initcommands:
+    def initInterface(self, __initcommands):
+        for i in __initcommands:
             self.__loraWamCom.write(i)
 
