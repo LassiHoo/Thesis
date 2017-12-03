@@ -72,14 +72,14 @@ class loraWanPlatfom(basePlatform):
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
             self.createInitList()
-            source = open(self.initFileName)
+            source = open(self.initFileName,"rb")
             pickle.dump(basePlatform.initList, source)
             source.close()
 
     def createTransmitFile(self):
         if not os.path.exists(self.transmitFileName):
             self.createLoraWanTransmitlist()
-            source = open(self.transmitFileName)
+            source = open(self.transmitFileName,"rb")
             pickle.dump(basePlatform.transmitterList, source)
             source.close()
 
