@@ -6,7 +6,6 @@ from EndNodeInitialization import basePlatform
 class LoraWan:
     # this must be asked first in the start up
     Port = '/dev/ttyACM0'
-    __loraWamCom = serial()
     __platForm = loraWanPlatfom()
     __init = basePlatform()
     __initcommands=[]
