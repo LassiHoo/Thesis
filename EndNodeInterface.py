@@ -19,12 +19,15 @@ class LoraWan:
                                    timeout=1)
 
         # create transmit and initializaiotn files if they do not exists
-        self.__platForm.createLoraWanTransmitlist()
-        self.__platForm.createInitList()
+        self.__platForm.createTransmitFile()
+        self.__platForm.createInitializationFile()
 
-        self.__trasmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
+        self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
+        for i in self.__transmitcommands:
+            print "transmit commands number, ",i, "and content",self.__transmitcommands[i]
         self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
-
+        for i in self.__initcommands:
+            print "transmit commands number, ",i, "and content",self.__initcommands[i]
 
     def transmit(self,string):
         self.__loraWanCom.write(self.__transmitcommands[4] + string + self.__transmitcommands[5])
