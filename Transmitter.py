@@ -8,7 +8,7 @@ def main():
     endnodeInterFace = LoraWan()
     endnodeInterFace.initInterface()
 
-    for i in transmitSettings.sendCount:
+    for i in range (0,transmitSettings.sendCount):
         sleep (transmitSettings.sendInterval)
         endnodeInterFace.transmit("testi")
 
