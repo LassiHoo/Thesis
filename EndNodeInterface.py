@@ -34,5 +34,5 @@ class LoraWan:
 
     def initInterface(self):
         for i in self.__initcommands:
-            self.__loraWamCom.write(i)
+            self.__loraWanCom.write(i)
 
