@@ -1,5 +1,6 @@
 import os
 import pickle
+import FileHandler
 
 class basePlatform:
 
@@ -49,9 +50,11 @@ class loraWanPlatfom(basePlatform):
     RLF = "\r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
-
-    def commandIndex(self):
-        basePlatform.commandIndex = "START_TIME" "SEND_INTERVAL" "SEND_COUNT" "PAYLOAD_LENGHT" "TX_COMMAND""LINE_FEED"
+    START_TIME = 0
+    SEND_INTERVAL = 1
+    PAYLOAD_LENGHT = 2
+    TX_COMMAND = 3
+    LINE_FEED = 4
 
     def createLoraWanTransmitlist(self):
         #creating list

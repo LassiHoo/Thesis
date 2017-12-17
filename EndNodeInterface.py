@@ -1,6 +1,7 @@
 import serial
 from EndNodeInitialization import loraWanPlatfom
 from EndNodeInitialization import basePlatform
+from FileHandler import FileHandler
 
 
 class LoraWan:
@@ -30,7 +31,7 @@ class LoraWan:
             print i
 
     def transmit(self,string):
-        self.__loraWanCom.write(self.__transmitcommands[4] + string + self.__transmitcommands[5])
+        self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
 
     def initInterface(self):
         for i in self.__initcommands:
