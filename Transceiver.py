@@ -1,23 +1,21 @@
 from BasePlatform import loraWanPlatfom
 from BasePlatform import basePlatform
 from Lorawan import LoraWan
-from SSH import ssh_connection
+
 import sys
 
 def main():
-    ssh = ssh_connection()
-    transmitSettings = basePlatform()
-    endnodeInterFace = LoraWan()
-    endnodeInterFace.initInterface()
 
-    #log into gateway and start to tcp dump
-    ssh.Login('192.168.0.119','pi','raspberry')
-    ssh.StartTCPdump("testfile.dat")
+    transmit_settings = basePlatform()
+    lpwa_interface = LoraWan()
+    lpwa_interface.initInterface()
+    lpwa_interface.start_gateway_logging()
 
 
-    for i in range (0,transmitSettings.sendCount):
-        sleep (transmitSettings.sendInterval)
-        endnodeInterFace.transmit("testi")
+
+    for i in range (0,transmit_settings.sendCount):
+        sleep (transmit_settings.sendInterval)
+        lpwa_interface.transmit("testi")
 
 
 if __name__ == "__main__":

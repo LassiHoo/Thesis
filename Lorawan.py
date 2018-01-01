@@ -1,8 +1,6 @@
 import serial
-from BasePlatform import loraWanPlatfom
 from BasePlatform import basePlatform
-from FileHandler import FileHandler
-
+from tcp_ip import ssh_connection
 
 class LoraWan:
     # this must be asked first in the start up
@@ -36,6 +34,12 @@ class LoraWan:
     def initInterface(self):
         for i in self.__initcommands:
             self.__loraWanCom.write(i)
+
+    def start_gateway_logging(self):
+        # log into gateway and start to tcp dump
+        ssh = ssh_connection()
+        ssh.Login('192.168.0.119', 'pi', 'raspberry')
+        ssh.StartTCPdump("testfile.dat")
 
 class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX send commands
