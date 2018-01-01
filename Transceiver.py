@@ -10,8 +10,10 @@ def main():
     endnodeInterFace = LoraWan()
     endnodeInterFace.initInterface()
 
-    #log in to gateway
-    ssh.Login()
+    #log into gateway and start to tcp dump
+    ssh.Login('192.168.0.119','pi','raspberry')
+    ssh.StartTCPdump("testfile.dat")
+
 
     for i in range (0,transmitSettings.sendCount):
         sleep (transmitSettings.sendInterval)

@@ -17,7 +17,7 @@ class ssh_connection:
 
     def StartTCPdump(self, filename):
         try:
-            self.connection.sendline('tcpdump -w' + filename)
+            self.connection.sendline('tcpdump -w ' + filename)
         except pxssh.ExceptionPxssh as e:
             print("start tcp dump failed.")
             print(e)
