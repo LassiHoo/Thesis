@@ -1,39 +1,41 @@
-import os
-import pickle
-import FileHandler
+import serial
+from BasePlatform import loraWanPlatfom
+from BasePlatform import basePlatform
+from FileHandler import FileHandler
 
-class basePlatform:
 
-    transmitterList = []
-    initList=[]
-    commandIndex=[]
-    sendInterval = 1
-    sendCount = 10
-    payLoadLenght = 10
-    startTime = ""
-    isDutyCycleOn = False
+class LoraWan:
+    # this must be asked first in the start up
+    Port = '/dev/ttyACM0'
+    __platForm = loraWanPlatfom()
+    __init = basePlatform()
+    __initcommands=[]
+    __transmitcommands=[]
 
-    def dutyCycleOn():
-        #create dutyCycle calculation here
-        return False
+    def __init__(self, ):
+        self.__loraWanCom = serial.Serial(port=self.Port,
+                                   baudrate=57600, parity=serial.PARITY_NONE,
+                                   stopbits=serial.STOPBITS_ONE,
+                                   bytesize=serial.EIGHTBITS,
+                                   timeout=1)
 
-    def readfile(self,filename):
-        try:
-            file = open(filename, "rb")
-            read = pickle.load(file)
-            return read
-        except IOError:
-            print("Could not open the file")
-            return False
+        # create transmit and initializaiotn files if they do not exists
+        self.__platForm.createTransmitFile()
+        self.__platForm.createInitializationFile()
 
-    def fileHandleOpen(name):
-        #opens a transmitter or initialization file
-        try:
-            source = open(name, "rw")
-            return source
-        except IOError:
-            print("Could not open the file")
-            return False
+        self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
+        for i in self.__transmitcommands:
+            print i
+        self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
+        for i in self.__initcommands:
+            print i
+
+    def transmit(self,string):
+        self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
+
+    def initInterface(self):
+        for i in self.__initcommands:
+            self.__loraWanCom.write(i)
 
 class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX send commands
@@ -85,5 +87,3 @@ class loraWanPlatfom(basePlatform):
             source = open(self.transmitFileName,"wb")
             pickle.dump(basePlatform.transmitterList, source)
             source.close()
-
-#class NBiotTransmitterList
