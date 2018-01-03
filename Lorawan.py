@@ -17,7 +17,7 @@ class loraWanPlatfom(basePlatform):
     Appkey = "appkey 660625ED5FC16D37B82A5A0E9042CF0B"
     DevEui = "deveui 0004A30B001F3A95"
     macSave = "mac save"
-    RLF = "\r\n"
+    RLF = " \r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
     START_TIME = 0
@@ -34,7 +34,7 @@ class loraWanPlatfom(basePlatform):
         basePlatform.transmitterList.append(basePlatform.sendCount)
         basePlatform.transmitterList.append(basePlatform.payLoadLenght)
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.MacTx + self.unConf + self.portnr)
+        basePlatform.transmitterList.append(self.MacTx + self.Conf + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
 
     def createInitList(self):
@@ -90,7 +90,7 @@ class LoraWan:
 
     def initInterface(self):
         for i in self.__initcommands:
-            time.sleep(1)
+            time.sleep(3)
             print(i)
             self.__loraWanCom.write(i)
 
