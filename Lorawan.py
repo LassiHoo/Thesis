@@ -19,11 +19,11 @@ class loraWanPlatfom(basePlatform):
     RLF = "\r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
-    START_TIME = 0
-    SEND_INTERVAL = 1
-    PAYLOAD_LENGHT = 2
-    TX_COMMAND = 3
-    LINE_FEED = 4
+    START_TIME = 1
+    SEND_INTERVAL = 2
+    PAYLOAD_LENGHT = 3
+    TX_COMMAND = 4
+    LINE_FEED = 5
 
     def createLoraWanTransmitlist(self):
         #creating list
