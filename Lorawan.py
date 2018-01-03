@@ -17,6 +17,7 @@ class loraWanPlatfom(basePlatform):
     Appkey = "appkey 660625ED5FC16D37B82A5A0E9042CF0B"
     DevEui = "deveui 0004A30B001F3A95"
     macSave = "mac save"
+    JoinOTaa = "mac join otaa\r\n"
     RLF = "\r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
@@ -37,12 +38,14 @@ class loraWanPlatfom(basePlatform):
         basePlatform.transmitterList.append(self.MacTx + self.Conf + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
 
+
     def createInitList(self):
         #creating init list
         basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
         basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
+        basePlatform.initList.append(self.JoinOTaa)
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
