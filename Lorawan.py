@@ -17,7 +17,7 @@ class loraWanPlatfom(basePlatform):
     Appkey = "appkey 660625ED5FC16D37B82A5A0E9042CF0B"
     DevEui = "deveui 0004A30B001F3A95"
     macSave = "mac save"
-    RLF = " \r\n"
+    RLF = "\r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
     START_TIME = 0
