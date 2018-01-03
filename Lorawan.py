@@ -2,6 +2,7 @@ import serial
 from BasePlatform import basePlatform
 from tcp_ip import ssh_connection
 import time
+import os
 
 class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX instruction set
@@ -54,7 +55,7 @@ class loraWanPlatfom(basePlatform):
             source = open(self.transmitFileName,"wb")
             pickle.dump(basePlatform.transmitterList, source)
             source.close()
-            
+
 class LoraWan:
     # this must be asked first in the start up
     Port = '/dev/ttyACM0'
