@@ -96,6 +96,7 @@ class LoraWan:
             time.sleep(5)
             print(i)
             self.__loraWanCom.write(i)
+        time.sleep(10)
 
     def start_gateway_logging(self):
         # log into gateway and start to tcp dump
