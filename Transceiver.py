@@ -1,4 +1,3 @@
-from BasePlatform import loraWanPlatfom
 from BasePlatform import basePlatform
 from Lorawan import LoraWan
 
