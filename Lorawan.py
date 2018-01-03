@@ -3,6 +3,7 @@ from BasePlatform import basePlatform
 from tcp_ip import ssh_connection
 import time
 import os
+import pickle
 
 class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX instruction set
