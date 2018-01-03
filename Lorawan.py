@@ -1,6 +1,7 @@
 import serial
 from BasePlatform import basePlatform
 from tcp_ip import ssh_connection
+import sys
 
 class LoraWan:
     # this must be asked first in the start up
@@ -33,6 +34,8 @@ class LoraWan:
 
     def initInterface(self):
         for i in self.__initcommands:
+            sleep 1
+            print(i)
             self.__loraWanCom.write(i)
 
     def start_gateway_logging(self):
@@ -42,7 +45,7 @@ class LoraWan:
         ssh.StartTCPdump("testfile.dat")
 
 class loraWanPlatfom(basePlatform):
-    #these are LoraWan end node related configuration  and TX send commands
+    #these are LoraWan end node related configuration  and TX instruction set
 
     MacSet = "mac set "
     MacTx = "mac tx "
@@ -68,6 +71,7 @@ class loraWanPlatfom(basePlatform):
         basePlatform.transmitterList.append(basePlatform.sendInterval)
         basePlatform.transmitterList.append(basePlatform.sendCount)
         basePlatform.transmitterList.append(basePlatform.payLoadLenght)
+        # isolate these two into another list
         basePlatform.transmitterList.append(self.MacTx + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
 
