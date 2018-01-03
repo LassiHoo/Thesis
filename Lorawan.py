@@ -1,7 +1,8 @@
 import serial
 from BasePlatform import basePlatform
 from tcp_ip import ssh_connection
-import sys
+import time
+
 
 class LoraWan:
     # this must be asked first in the start up
@@ -34,7 +35,7 @@ class LoraWan:
 
     def initInterface(self):
         for i in self.__initcommands:
-            sleep 1
+            time.sleep(1)
             print(i)
             self.__loraWanCom.write(i)
 

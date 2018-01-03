@@ -1,7 +1,7 @@
 from BasePlatform import basePlatform
 from Lorawan import LoraWan
 
-import sys
+import time
 
 def main():
 
@@ -13,7 +13,7 @@ def main():
 
 
     # for i in range (0,transmit_settings.sendCount):
-    #     sleep (transmit_settings.sendInterval)
+    #     time.sleep(1) (transmit_settings.sendInterval)
     #     lpwa_interface.transmit("testi")
 
 
