@@ -19,8 +19,9 @@ class loraWanPlatfom(basePlatform):
     RLF = "\r\n"
     initFileName = "LPWAinitfile.dat"
     transmitFileName = "LPWATransmitfile.dat"
-    START_TIME = 1
-    SEND_INTERVAL = 2
+    START_TIME = 0
+    SEND_INTERVAL = 1
+    SEND_COUNT = 2
     PAYLOAD_LENGHT = 3
     TX_COMMAND = 4
     LINE_FEED = 5
@@ -32,7 +33,7 @@ class loraWanPlatfom(basePlatform):
         basePlatform.transmitterList.append(basePlatform.sendCount)
         basePlatform.transmitterList.append(basePlatform.payLoadLenght)
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.MacTx + self.portnr)
+        basePlatform.transmitterList.append(self.MacTx + self.unConf + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
 
     def createInitList(self):
