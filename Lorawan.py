@@ -93,7 +93,7 @@ class LoraWan:
 
     def initInterface(self):
         for i in self.__initcommands:
-            time.sleep(3)
+            time.sleep(5)
             print(i)
             self.__loraWanCom.write(i)
 
