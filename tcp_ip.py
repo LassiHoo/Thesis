@@ -9,6 +9,9 @@ class ssh_connection:
     def Login(self, localhost, username, password):
 
         try:
+            print("Login progress to ", localhost)
+            print("username ", username)
+            print("password ", password)
             self.connection.login(localhost, username, password)
 
         except pxssh.ExceptionPxssh as e:
