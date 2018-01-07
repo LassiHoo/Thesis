@@ -14,7 +14,7 @@ def main():
 
     for i in range (0,transmit_settings.sendCount):
          time.sleep(3)
-         lpwa_interface.transmit("dsfhlksdf")
+         lpwa_interface.transmit("e")
 
 
 if __name__ == "__main__":
