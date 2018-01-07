@@ -92,13 +92,8 @@ class LoraWan:
             print i
 
     def transmit(self,string):
-        MacTx = "mac tx "
-        Conf = "cnf "
-        unConf = "uncnf "
-        portnr = "1 "
-        RLF = " \r\n"
-        print(MacTx + Conf + portnr + string + RLF)
-        self.__loraWanCom.write(MacTx + Conf + portnr + "www" + RLF)
+        print(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED] + "\n")
+        self.__loraWanCom.write(self.MacTx + self.Conf + string + self.RLF)
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(5)
