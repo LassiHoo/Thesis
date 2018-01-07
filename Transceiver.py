@@ -8,7 +8,7 @@ def main():
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
-    #lpwa_interface.start_gateway_logging()
+    lpwa_interface.start_gateway_logging()
 
 
 
