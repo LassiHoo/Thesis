@@ -20,9 +20,16 @@ class ssh_connection:
 
     def StartTCPdump(self, filename):
         try:
-            self.connection.sendline('tcpdump -w ' + filename)
+            self.connection.sendline('sudo tcpdump  -tttt dst 52.28.250.46 -w ' + filename)
         except pxssh.ExceptionPxssh as e:
             print("start tcp dump failed.")
+            print(e)
+
+    def StopTCPdump(self):
+        try:
+            self.connection.sendline("\x03")
+        except pxssh.ExceptionPxssh as e:
+            print("stop tcp dump failed.")
             print(e)
 
     def GetTCPdumpFile(self, username, filename,localhost):

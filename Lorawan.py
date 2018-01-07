@@ -87,6 +87,7 @@ class LoraWan:
         self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
         for i in self.__initcommands:
             print i
+        self.ssh = ssh_connection()
 
     def transmit(self,string):
         print(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED] + "\n")
@@ -100,6 +101,10 @@ class LoraWan:
 
     def start_gateway_logging(self):
         # log into gateway and start to tcp dump
-        ssh = ssh_connection()
-        ssh.Login('192.168.0.119', 'pi', 'raspberry')
-        ssh.StartTCPdump("testfile.dat")
+
+        self.ssh.Login('192.168.0.119', 'pi', 'raspberry')
+        self.ssh.StartTCPdump("testfile.dat")
+
+    def stop_gateway_logging(self):
+        # log into gateway and start to tcp dump
+        self.ssh.StopTCPdump()

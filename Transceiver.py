@@ -9,7 +9,7 @@ def main():
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
-    #lpwa_interface.start_gateway_logging()
+    lpwa_interface.start_gateway_logging()
 
 
 
@@ -17,6 +17,7 @@ def main():
          time.sleep(transmit_settings.sendInterval)
          lpwa_interface.transmit(wapice_test_line_hex)
 
+    lpwa_interface.stop_gateway_logging()
 
 if __name__ == "__main__":
     main()
