@@ -1,5 +1,5 @@
 from pexpect import pxssh
-
+import os
 class ssh_connection:
 
     def __init__(self, ):
@@ -32,11 +32,20 @@ class ssh_connection:
             print("stop tcp dump failed.")
             print(e)
 
-    def GetTCPdumpFile(self, username, filename,localhost):
+    def GetTCPdumpFile(self, localpath, remotepath):
         try:
-            self.connection.sendline('scp .' + username + '@' + localhost)
+            sftp = self.ssh.open_sftp()
+            sftp.put(localpath, remotepath)
+            sftp.close()
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
+            print(e)
+
+    def CloseConnection(self):
+        try:
+            self.ssh.close()
+        except pxssh.ExceptionPxssh as e:
+            print("pxssh failed to close the connection.")
             print(e)
 
 # We can also execute multiple command like this:
