@@ -32,11 +32,9 @@ class ssh_connection:
             print("stop tcp dump failed.")
             print(e)
 
-    def GetTCPdumpFile(self, localpath, remotepath):
+    def GetTCPdumpFile(self, username, filename,localhost):
         try:
-            sftp = self.ssh.open_sftp()
-            sftp.put(localpath, remotepath)
-            sftp.close()
+            self.connection.sendline('sshpass -p raspberryonmato '+'scp '+ filename + " " + username + '@' + localhost)
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
             print(e)
