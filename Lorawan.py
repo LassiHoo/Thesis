@@ -62,6 +62,13 @@ class loraWanPlatfom(basePlatform):
             source.close()
 
 class LoraWan:
+
+    MacTx = "mac tx "
+    Conf = "cnf "
+    unConf = "uncnf "
+    portnr = "1 "
+    RLF = "\r\n"
+
     # this must be asked first in the start up
     Port = '/dev/ttyACM0'
     __platForm = loraWanPlatfom()
@@ -89,7 +96,7 @@ class LoraWan:
 
     def transmit(self,string):
         print(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED] + "\n")
-        self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
+        self.__loraWanCom.write(self.MacTx + self.Conf + string + self.RLF)
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(5)
