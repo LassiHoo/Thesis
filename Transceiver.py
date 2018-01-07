@@ -5,10 +5,11 @@ import time
 
 def main():
     wapice_test_line_hex = "576170696365204c505741207465737420656e7669726f6e6d656e74"
+    tcp_dump_file_name = "Wapice.dat"
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
-    lpwa_interface.start_gateway_logging()
+    #lpwa_interface.start_gateway_logging()
 
 
 
