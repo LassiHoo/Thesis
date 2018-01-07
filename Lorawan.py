@@ -41,11 +41,8 @@ class loraWanPlatfom(basePlatform):
 
     def createInitList(self):
         #creating init list
-        basePlatform.initList.append("sys factoryRESET" + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
-        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
-        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.JoinOTaa)
@@ -93,7 +90,7 @@ class LoraWan:
 
     def transmit(self,string):
         print(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED] + "\n")
-        self.__loraWanCom.write(self.MacTx + self.Conf + string + self.RLF)
+        self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(5)
