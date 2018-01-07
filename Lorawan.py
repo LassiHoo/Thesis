@@ -49,7 +49,6 @@ class loraWanPlatfom(basePlatform):
         basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.JoinOTaa)
-        basePlatform.initList.append(self.macSave + self.RLF)
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
@@ -66,12 +65,6 @@ class loraWanPlatfom(basePlatform):
             source.close()
 
 class LoraWan:
-
-    MacTx = "mac tx "
-    Conf = "cnf "
-    unConf = "uncnf "
-    portnr = "1 "
-    RLF = "\r\n"
 
     # this must be asked first in the start up
     Port = '/dev/ttyACM0'
@@ -99,8 +92,13 @@ class LoraWan:
             print i
 
     def transmit(self,string):
-        print(self.MacTx + self.Conf + self.portnr + string + self.RLF)
-        self.__loraWanCom.write(self.MacTx + self.Conf + self.portnr + string + self.RLF)
+        MacTx = "mac tx "
+        Conf = "cnf "
+        unConf = "uncnf "
+        portnr = "1 "
+        RLF = "\r\n"
+        print(MacTx + Conf + portnr + string + RLF)
+        self.__loraWanCom.write(MacTx + Conf + portnr + string + RLF)
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(5)
