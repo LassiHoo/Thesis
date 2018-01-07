@@ -35,7 +35,7 @@ class loraWanPlatfom(basePlatform):
         basePlatform.transmitterList.append(basePlatform.sendCount)
         basePlatform.transmitterList.append(basePlatform.payLoadLenght)
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.MacTx + self.unConf + self.portnr)
+        basePlatform.transmitterList.append(self.MacTx + self.Conf + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
 
 
