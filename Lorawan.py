@@ -96,7 +96,7 @@ class LoraWan:
         Conf = "cnf "
         unConf = "uncnf "
         portnr = "1 "
-        RLF = "\r\n"
+        RLF = " \r\n"
         print(MacTx + Conf + portnr + string + RLF)
         self.__loraWanCom.write(MacTx + Conf + portnr + "www" + RLF)
     def initInterface(self):
