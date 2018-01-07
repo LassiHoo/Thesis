@@ -41,12 +41,15 @@ class loraWanPlatfom(basePlatform):
 
     def createInitList(self):
         #creating init list
-        basePlatform.initList.append("sys factoryRESET"+self.RLF)
+        basePlatform.initList.append("sys factoryRESET" + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
+        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
+        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.JoinOTaa)
+        basePlatform.initList.append(self.macSave + self.RLF)
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
