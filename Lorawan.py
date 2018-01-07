@@ -98,7 +98,7 @@ class LoraWan:
         portnr = "1 "
         RLF = "\r\n"
         print(MacTx + Conf + portnr + string + RLF)
-        self.__loraWanCom.write(MacTx + Conf + portnr + string + RLF)
+        self.__loraWanCom.write(MacTx + Conf + portnr + "www" + RLF)
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(5)
