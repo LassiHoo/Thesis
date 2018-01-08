@@ -34,7 +34,9 @@ class ssh_connection:
 
     def GetTCPdumpFile(self, username, filename,localhost):
         try:
-            self.connection.sendline('sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + filename + " .")
+            scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + filename + " ."
+            print(scp)
+            self.connection.sendline(scp)
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
             print(e)
