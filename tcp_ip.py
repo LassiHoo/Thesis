@@ -41,7 +41,7 @@ class ssh_connection:
 
     def CloseConnection(self):
         try:
-            self.ssh.close()
+            self.connection.close()
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed to close the connection.")
             print(e)
