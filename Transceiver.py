@@ -10,7 +10,7 @@ def main():
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
     lpwa_interface.start_gateway_logging()
-
+    time.sleep(10)
 
 
     for i in range (0,transmit_settings.sendCount):
