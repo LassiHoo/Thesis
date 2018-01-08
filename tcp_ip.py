@@ -36,7 +36,7 @@ class ssh_connection:
         try:
             scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + filename + " ."
             print(scp)
-            self.connection.sendline(scp)
+            os.system(scp)
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
             print(e)
