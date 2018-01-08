@@ -34,7 +34,7 @@ class ssh_connection:
 
     def GetTCPdumpFile(self, username, filename,localhost):
         try:
-            self.connection.sendline('sshpass -p raspberryonmato '+'scp '+ filename + " " + username + '@' + localhost)
+            self.connection.sendline('sshpass -p raspberry '+'scp '+ filename + " " + username + '@' + localhost)
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
             print(e)
