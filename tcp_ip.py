@@ -36,7 +36,7 @@ class ssh_connection:
 
     def GetTCPdumpFile(self, username, filename,localhost):
         try:
-            scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + filename + " ."
+            scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + 'github/lora_gateway/util_pkt_logger/' + "*.csv"
             print(scp)
             os.system(scp)
         except pxssh.ExceptionPxssh as e:
