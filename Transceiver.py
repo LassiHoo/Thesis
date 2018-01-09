@@ -13,7 +13,7 @@ def main():
     time.sleep(10)
 
 
-    for i in range (0,transmit_settings.sendCount):
+    for i in range (0,1):
          time.sleep(transmit_settings.sendInterval)
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(5)

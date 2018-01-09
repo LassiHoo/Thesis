@@ -39,7 +39,7 @@ class ssh_connection:
             scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + 'github/lora_gateway/util_pkt_logger/' + "\*.csv " + "."
             print(scp)
             os.system(scp)
-            self.connection.sendline('cd github/lora_gateway/util_pkt_logger/\*.csv')
+            self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
             self.connection.sendline('sudo rm *.csv')
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
