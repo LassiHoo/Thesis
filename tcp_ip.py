@@ -20,7 +20,8 @@ class ssh_connection:
 
     def StartTCPdump(self, filename):
         try:
-            self.connection.sendline('sudo tcpdump  -tttt dst 52.28.250.46 -w ' + filename)
+            self.connection.sendline('sudo ./enableWriteAccess.sh')
+            self.connection.sendline('sudo /github/lora_gateway/util_pkt_logger/sudo ./util_pkt_logger')
         except pxssh.ExceptionPxssh as e:
             print("start tcp dump failed.")
             print(e)
