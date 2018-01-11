@@ -25,7 +25,7 @@ class ssh_connection:
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
             self.connection.sendline('sudo ./util_pkt_logger')
         except pxssh.ExceptionPxssh as e:
-            print("start tcp dump failed.")
+            print("start tcp dump failed.")2
             print(e)
 
     def StopTCPdump(self):
@@ -40,7 +40,7 @@ class ssh_connection:
             scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + 'github/lora_gateway/util_pkt_logger/' + "\*.csv " + "."
             print(scp)
             os.system(scp)
-            time.sleep(5)
+            time.sleep(15)
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
             self.connection.sendline('sudo rm *.csv')
         except pxssh.ExceptionPxssh as e:
