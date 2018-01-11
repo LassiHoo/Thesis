@@ -7,7 +7,7 @@ class basePlatform:
     transmitterList = []
     initList=[]
     commandIndex=[]
-    sendInterval = 5
+    sendInterval = 8
     sendCount = 10
     payLoadLenght = 10
     startTime = ""
