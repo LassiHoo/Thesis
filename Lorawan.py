@@ -43,7 +43,9 @@ class loraWanPlatfom(basePlatform):
         #creating init list
         basePlatform.initList.append("sys factoryRESET" + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
+        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
+        basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
         basePlatform.initList.append(self.JoinOTaa)
