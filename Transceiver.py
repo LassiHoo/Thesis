@@ -13,11 +13,11 @@ def main():
     time.sleep(10)
 
 
-    for i in range (0,1):
+    for i in range (0,20):
          time.sleep(transmit_settings.sendInterval)
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(10)
-    #lpwa_interface.stop_gateway_logging()
+    lpwa_interface.stop_gateway_logging()
 
 if __name__ == "__main__":
     main()
