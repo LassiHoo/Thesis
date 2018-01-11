@@ -25,7 +25,7 @@ class ssh_connection:
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
             self.connection.sendline('sudo ./util_pkt_logger')
         except pxssh.ExceptionPxssh as e:
-            print("start tcp dump failed.")2
+            print("start tcp dump failed.")
             print(e)
 
     def StopTCPdump(self):
