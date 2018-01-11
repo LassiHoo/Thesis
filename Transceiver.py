@@ -16,7 +16,7 @@ def main():
     for i in range (0,1):
          time.sleep(transmit_settings.sendInterval)
          lpwa_interface.transmit(wapice_test_line_hex)
-    time.sleep(5)
+    time.sleep(10)
     lpwa_interface.stop_gateway_logging()
 
 if __name__ == "__main__":

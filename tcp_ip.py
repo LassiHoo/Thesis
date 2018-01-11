@@ -1,5 +1,6 @@
 from pexpect import pxssh
 import os
+import time
 class ssh_connection:
 
     def __init__(self, ):
@@ -39,6 +40,7 @@ class ssh_connection:
             scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + 'github/lora_gateway/util_pkt_logger/' + "\*.csv " + "."
             print(scp)
             os.system(scp)
+            time.sleep(5)
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
             self.connection.sendline('sudo rm *.csv')
         except pxssh.ExceptionPxssh as e:

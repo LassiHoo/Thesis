@@ -108,5 +108,6 @@ class LoraWan:
     def stop_gateway_logging(self):
         # log into gateway and start to tcp dump
         self.ssh.StopTCPdump()
+        time.sleep(5)
         self.ssh.GetTCPdumpFile('pi','testfile.dat','192.168.0.119')
         self.ssh.CloseConnection()
