@@ -14,6 +14,7 @@ def main():
     lpwa_interface = LoraWan()
     transmit_log_file = file_hander("transmitLogfile.dat")
     lpwa_interface.initInterface()
+    print( lpwa_interface.transmitFileName )
     while not os.path.exists(lpwa_interface.transmitFileName):
         print ("waiting transmit file")
 
