@@ -26,7 +26,7 @@ class loraWanPlatfom(basePlatform):
     TX_COMMAND = 4
     LINE_FEED = 5
     initFileName = "LPWAinitfile.dat"
-
+    transmitFileName = "LPWATransmitfile.dat"
 
     def createLoraWanTransmitlist(self):
         #creating list
@@ -64,7 +64,7 @@ class loraWanPlatfom(basePlatform):
             pickle.dump(basePlatform.transmitterList, source)
             source.close()
 
-class LoraWan:
+class LoraWan():
 
     # this must be asked first in the start up
     Port = '/dev/ttyACM0'
@@ -72,8 +72,8 @@ class LoraWan:
     __init = basePlatform()
     __initcommands=[]
     __transmitcommands=[]
+    transmitFileName=__platForm.transmitFileName
 
-    transmitFileName = "LPWATransmitfile.dat"
     def __init__(self, ):
         self.__loraWanCom = serial.Serial(port=self.Port,
                                    baudrate=57600, parity=serial.PARITY_NONE,
