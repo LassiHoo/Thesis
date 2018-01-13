@@ -23,8 +23,8 @@ def main():
     lpwa_interface.start_gateway_logging()
     time.sleep(10)
 
-    timenow = datetime.now()
-    print("waiting for start time, time now: ", timenow.microseconds, " start time ", transmit_settings.startTime)
+    timenow = datetime.datetime.now()
+    print("waiting for start time, time now: ", timenow.microsecond, " start time ", transmit_settings.startTime)
     #while (timenow.microseconds < transmit_settings.startTime):
     #    print( "waiting for start time, time now: ",timenow.microseconds," start time ",transmit_settings.startTime)
     #    timenow = datetime.now()
