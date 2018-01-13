@@ -31,7 +31,7 @@ def main():
 
     for i in range (0, transmit_settings.sendCount):
          time.sleep(transmit_settings.sendInterval)
-         date = datetime.now()
+         date = datetime.datetime.now()
          transmit_log_file.addTxData(wapice_test_line_hex,date.microseconds)
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(10)
