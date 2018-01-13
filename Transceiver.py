@@ -22,9 +22,11 @@ def main():
     time.sleep(10)
 
     timenow = datetime.now()
-    while (timenow.microseconds < transmit_settings.startTime):
-        print( "waiting for start time, time now: ",timenow.microseconds," start time ",transmit_settings.startTime)
-    
+    print("waiting for start time, time now: ", timenow.microseconds, " start time ", transmit_settings.startTime)
+    #while (timenow.microseconds < transmit_settings.startTime):
+    #    print( "waiting for start time, time now: ",timenow.microseconds," start time ",transmit_settings.startTime)
+    #    timenow = datetime.now()
+
     for i in range (0, transmit_settings.sendCount):
          time.sleep(transmit_settings.sendInterval)
          date = datetime.now()
