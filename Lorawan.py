@@ -19,14 +19,14 @@ class loraWanPlatfom(basePlatform):
     macSave = "mac save"
     JoinOTaa = "mac join otaa\r\n"
     RLF = "\r\n"
-    initFileName = "LPWAinitfile.dat"
-    transmitFileName = "LPWATransmitfile.dat"
     START_TIME = 0
     SEND_INTERVAL = 1
     SEND_COUNT = 2
     PAYLOAD_LENGHT = 3
     TX_COMMAND = 4
     LINE_FEED = 5
+
+
 
     def createLoraWanTransmitlist(self):
         #creating list
@@ -72,7 +72,8 @@ class LoraWan:
     __init = basePlatform()
     __initcommands=[]
     __transmitcommands=[]
-
+    initFileName = "LPWAinitfile.dat"
+    transmitFileName = "LPWATransmitfile.dat"
     def __init__(self, ):
         self.__loraWanCom = serial.Serial(port=self.Port,
                                    baudrate=57600, parity=serial.PARITY_NONE,
