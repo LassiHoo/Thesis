@@ -25,7 +25,7 @@ class loraWanPlatfom(basePlatform):
     PAYLOAD_LENGHT = 3
     TX_COMMAND = 4
     LINE_FEED = 5
-
+    initFileName = "LPWAinitfile.dat"
 
 
     def createLoraWanTransmitlist(self):
@@ -72,7 +72,7 @@ class LoraWan:
     __init = basePlatform()
     __initcommands=[]
     __transmitcommands=[]
-    initFileName = "LPWAinitfile.dat"
+
     transmitFileName = "LPWATransmitfile.dat"
     def __init__(self, ):
         self.__loraWanCom = serial.Serial(port=self.Port,
@@ -82,7 +82,7 @@ class LoraWan:
                                    timeout=1)
 
         # create transmit and initializaiotn files if they do not exists
-        self.__platForm.createTransmitFile()
+        #self.__platForm.createTransmitFile()
         self.__platForm.createInitializationFile()
 
         self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
