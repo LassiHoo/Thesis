@@ -14,3 +14,12 @@ class file_hander:
         source = open(self.transmitterFileName,"wb")
         pickle.dump(self.transmitDataList, source)
         source.close()
+
+    def readfile(self, filename):
+        try:
+            file = open(filename, "rb")
+            read = pickle.load(file)
+            return read
+        except IOError:
+            print("Could not open the file")
+            return False

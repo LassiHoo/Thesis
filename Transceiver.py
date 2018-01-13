@@ -37,6 +37,9 @@ def main():
     time.sleep(10)
     lpwa_interface.stop_gateway_logging()
     transmit_log_file.stroredata()
+    transmitlog = transmit_log_file.readfile(transmit_log_file.transmitterFileName)
+    for i in transmitlog:
+        print i
 
 if __name__ == "__main__":
     main()
