@@ -12,5 +12,5 @@ class file_hander:
 
     def stroredata(self):
         source = open(self.transmitterFileName,"wb")
-        pickle.dump(self.transmitterLogList, source)
+        pickle.dump(self.transmitDataList, source)
         source.close()
