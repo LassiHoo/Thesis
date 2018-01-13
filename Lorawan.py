@@ -82,7 +82,7 @@ class LoraWan():
                                    timeout=1)
 
         # create transmit and initializaiotn files if they do not exists
-        #self.__platForm.createTransmitFile()
+        self.__platForm.createTransmitFile()
         self.__platForm.createInitializationFile()
 
         self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
