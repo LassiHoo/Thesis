@@ -2,7 +2,7 @@ from BasePlatform import basePlatform
 from Lorawan import LoraWan
 from file_handler import file_hander
 import os
-import datetime import datetime
+import datetime
 
 import time
 
