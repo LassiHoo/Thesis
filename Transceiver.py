@@ -5,6 +5,8 @@ import os
 import datetime
 import random
 import time
+from Graph import graph
+
 
 def main():
     wapice_test_line_hex = "576170696365204c505741206576616c757461696f6e20706c6174666f726d"
@@ -57,6 +59,7 @@ def main():
 
     for f in delays:
         print (f)
-
+    graafi = graph()
+    graafi.plot()
 if __name__ == "__main__":
     main()
