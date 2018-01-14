@@ -54,12 +54,14 @@ def main():
         delays.append(tuple)
         r = r +1
         #transmit_log_file.seek_data_from_csv_file(i[1])
-    delays.pop(0)
     print("testing delays:")
     transmissiondelay = []
-    for f in delays:
-        print (f)
-        transmissiondelay.append = int(f[1])-int(f[0])
+    r = 0
+    for f in gatewaylist:
+        result = int(f)-int(transmitlog[r])
+        print (f, " - " , transmitlog[r]," = ",result )
+        transmissiondelay.append(result)
+
     graafi = graph()
     graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
 if __name__ == "__main__":

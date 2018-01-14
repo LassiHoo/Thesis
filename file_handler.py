@@ -41,6 +41,7 @@ class file_hander:
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
             returnlist.append(row[3])
+        returnlist.pop(0)
         return returnlist
 
     def seek_RSSI_data_from_csv_file(self):
