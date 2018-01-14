@@ -40,5 +40,5 @@ class file_hander:
         # loop through csv list
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
-            returnlist.append(row[2])
+            returnlist.append(row[3])
         return returnlist

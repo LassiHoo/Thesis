@@ -46,15 +46,17 @@ def main():
         print ("gatewaylist", i)
     r=0
     i=0
-    for i in transmitlog:
+    delays=[]
+    for t in transmitlog:
         print ("transmitlog",i[0])
-        tuple = i[0],gatewaylist[r]
+        tuple = t[0],gatewaylist[r]
+        delays.append(tuple)
         r = r + 1
         #transmit_log_file.seek_data_from_csv_file(i[1])
     print("testing delays:")
 
-    for i in tuple:
-        print (tuple)
+    for f in delays:
+        print (f)
 
 if __name__ == "__main__":
     main()
