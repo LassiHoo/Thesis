@@ -3,7 +3,7 @@ from Lorawan import LoraWan
 from file_handler import file_hander
 import os
 import datetime
-
+import random
 import time
 
 def main():
@@ -32,15 +32,20 @@ def main():
     for i in range (0, transmit_settings.sendCount):
          time.sleep(transmit_settings.sendInterval)
          date = datetime.datetime.now()
+         wapice_test_line_hex = hex(random.randint(0,20))[2:]
          transmit_log_file.addTxData(wapice_test_line_hex,date.microsecond)
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(10)
     lpwa_interface.stop_gateway_logging()
     transmit_log_file.strore_data()
     transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
-    for i in transmitlog:
-        print i
     transmit_log_file.return_csv_filename()
-    transmit_log_file.parse_csv_file()
+    for i in transmitlog:
+        print ("testing seek, test data", i[0])
+        transmit_log_file.seek_data_from_csv_file(i[0])
+        print ("testing seek, test data", i[1])
+        transmit_log_file.seek_data_from_csv_file(i[1])
+
+
 if __name__ == "__main__":
     main()

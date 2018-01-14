@@ -33,8 +33,14 @@ class file_hander:
         print("searching csv files:",test)
         self.csv_filename = fnmatch.filter(files, '*csv*')
 
-    def parse_csv_file(self):
-        with open(self.csv_filename[0], 'rb') as csvfile:
-            spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
-            for row in spamreader:
-                print ', '.join(row)
+    def seek_data_from_csv_file(self, value ):
+
+        csv_file = csv.reader(open('test.csv', "rb"), delimiter=",")
+        print(value)
+        # loop through csv list
+        for row in csv_file:
+            # if current rows 2nd value is equal to input, print that row
+
+            print(row[16])
+            #if value == row[16]:
+            #    print row
