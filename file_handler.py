@@ -1,5 +1,6 @@
 import pickle
 import os
+import fnmatch
 
 
 class file_hander:
@@ -27,6 +28,5 @@ class file_hander:
 
     def return_csv_filename(self):
         files = filter(os.path.isfile, os.listdir(os.curdir))
-        for i in files:
-            print (i)
-        print("searching csv files",files.index("csv"))
+        test = fnmatch.filter(files, '*csv*')
+        print("searching csv files:",test)
