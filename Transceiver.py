@@ -52,15 +52,16 @@ def main():
         print ("transmitlog",t[0])
         tuple = t[0],gatewaylist[r]
         delays.append(tuple)
-        r = r +1
+        r = r + 1
         #transmit_log_file.seek_data_from_csv_file(i[1])
     print("testing delays:")
     transmissiondelay = []
     r = 0
-    for f in gatewaylist:
-        result = int(f)-int(transmitlog[r])
-        print (f, " - " , transmitlog[r]," = ",result )
+    for f in transmitlog:
+        result = int(gatewaylist[r]) - int(f)
+        print (gatewaylist[r], " - " , f," = ",result )
         transmissiondelay.append(result)
+        r=r+1
 
     graafi = graph()
     graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
