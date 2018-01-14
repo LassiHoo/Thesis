@@ -48,7 +48,7 @@ def main():
     i=0
     delays=[]
     for t in transmitlog:
-        print ("transmitlog",i[0])
+        print ("transmitlog",t[0])
         tuple = t[0],gatewaylist[r]
         delays.append(tuple)
         r = r +1
