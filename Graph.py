@@ -2,7 +2,7 @@ import plotly
 import plotly.plotly as py
 from plotly.graph_objs import *
 
-class graph
+class graph:
     def __init__(self):
         plotly.tools.set_credentials_file(username='LassiPee', api_key='glb2jujea5')
 
