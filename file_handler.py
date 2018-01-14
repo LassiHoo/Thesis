@@ -27,4 +27,6 @@ class file_hander:
 
     def return_csv_filename(self):
         files = filter(os.path.isfile, os.listdir(os.curdir))
+        for i in files
+            print (i)
         print("searching csv files",files.index("csv"))
