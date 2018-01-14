@@ -33,7 +33,7 @@ class file_hander:
         print("searching csv files:",test)
         self.csv_filename = fnmatch.filter(files, '*csv*')
 
-    def seek_data_from_csv_file(self, value ):
+    def seek_transmission_delay_data_from_csv_file(self, value):
         returnlist=[]
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
         #print(value)
@@ -41,4 +41,24 @@ class file_hander:
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
             returnlist.append(row[3])
+        return returnlist
+
+    def seek_RSSI_data_from_csv_file(self):
+        returnlist = []
+        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
+        # print(value)
+        # loop through csv list
+        for row in csv_file:
+            # if current rows 2nd value is equal to input, print that row
+            returnlist.append(row[13])
+        return returnlist
+
+    def seek_SNR_data_from_csv_file(self):
+        returnlist = []
+        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
+        # print(value)
+        # loop through csv list
+        for row in csv_file:
+            # if current rows 2nd value is equal to input, print that row
+            returnlist.append(row[14])
         return returnlist

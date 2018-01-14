@@ -9,9 +9,7 @@ from Graph import graph
 
 
 def main():
-    wapice_test_line_hex = "576170696365204c505741206576616c757461696f6e20706c6174666f726d"
-    tcp_dump_file_name = "Wapice.dat"
-
+    
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     transmit_log_file = file_hander("transmitLogfile.dat")
@@ -42,7 +40,7 @@ def main():
     transmit_log_file.strore_data()
     transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
     transmit_log_file.return_csv_filename()
-    gatewaylist=transmit_log_file.seek_data_from_csv_file("delay test gateway delay")
+    gatewaylist=transmit_log_file.seek_transmission_delay_data_from_csv_file("delay test gateway delay")
 
     for i in gatewaylist:
         print ("gatewaylist", i)
@@ -56,10 +54,11 @@ def main():
         r = r +1
         #transmit_log_file.seek_data_from_csv_file(i[1])
     print("testing delays:")
-
+    transmissiondelay = []
     for f in delays:
         print (f)
+        transmissiondelay.append = int(f[1])-int(f[0])
     graafi = graph()
-    graafi.plot()
+    graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
 if __name__ == "__main__":
     main()

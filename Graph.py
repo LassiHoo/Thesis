@@ -6,15 +6,15 @@ class graph:
     def __init__(self):
         plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
-    def plot(self):
+    def plot(self, x1 ,y1, x2, y2):
 
         trace0 = Scatter(
-            x=[1, 2, 3, 4],
-            y=[10, 15, 13, 17]
+            x1,
+            y1
         )
         trace1 = Scatter(
-            x=[1, 2, 3, 4],
-            y=[16, 5, 11, 9]
+            x2,
+            y2
         )
         data = Data([trace0, trace1])
 
