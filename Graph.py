@@ -1,6 +1,6 @@
 import plotly
 import plotly.plotly as py
-        from plotly.graph_objs import *
+from plotly.graph_objs import *
 
 class graph
     def __init__(self):
