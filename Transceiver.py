@@ -41,5 +41,6 @@ def main():
     for i in transmitlog:
         print i
     transmit_log_file.return_csv_filename()
+    transmit_log_file.parse_csv_file()
 if __name__ == "__main__":
     main()
