@@ -36,11 +36,12 @@ class file_hander:
     def seek_data_from_csv_file(self, value ):
 
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        print(value)
+        #print(value)
         # loop through csv list
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
-            print(value)
-            print(row[3])
+            returnlist = row[3]
+            #print(row[3])
             #if value == row[16]:
             #    print row
+        return returnlist

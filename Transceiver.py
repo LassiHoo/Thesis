@@ -40,12 +40,17 @@ def main():
     transmit_log_file.strore_data()
     transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
     transmit_log_file.return_csv_filename()
-    transmit_log_file.seek_data_from_csv_file("delay test gateway delay")
+    gatewaylist=transmit_log_file.seek_data_from_csv_file("delay test gateway delay")
+    r=0
     for i in transmitlog:
-
-        print ("testing seek, transmitted data delay ", i[1])
+        #print (i[0])
+        tuple = i[0],gatewaylist[r]
+        r = r + 1
         #transmit_log_file.seek_data_from_csv_file(i[1])
-
+    print("testing delays:")
+    
+    for i in tuple:
+        print (tuple)
 
 if __name__ == "__main__":
     main()
