@@ -39,6 +39,7 @@ def main():
     lpwa_interface.stop_gateway_logging()
     transmit_log_file.strore_data()
     transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
+
     transmit_log_file.return_csv_filename()
     gatewaylist=transmit_log_file.seek_transmission_delay_data_from_csv_file("delay test gateway delay")
 
@@ -53,6 +54,7 @@ def main():
         delays.append(tuple)
         r = r +1
         #transmit_log_file.seek_data_from_csv_file(i[1])
+    delays.pop(0)
     print("testing delays:")
     transmissiondelay = []
     for f in delays:
