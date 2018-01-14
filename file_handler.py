@@ -41,6 +41,6 @@ class file_hander:
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
 
-            print(row[16])
+            print(row[15])
             #if value == row[16]:
             #    print row
