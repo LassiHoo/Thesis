@@ -38,12 +38,7 @@ class file_hander:
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
         #print(value)
         # loop through csv list
-        i=0
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
-            returnlist[i] = row[2]
-            i=i+1
-            #print(row[3])
-            #if value == row[16]:
-            #    print row
+            returnlist.append(row[2])
         return returnlist
