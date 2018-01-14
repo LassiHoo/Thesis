@@ -7,7 +7,7 @@ import datetime
 import time
 
 def main():
-    wapice_test_line_hex = "576170696365204c505741207465737420656e7669726f6e6d656e74"
+    wapice_test_line_hex = "576170696365204c505741206576616c757461696f6e20706c6174666f726d"
     tcp_dump_file_name = "Wapice.dat"
 
     transmit_settings = basePlatform()
