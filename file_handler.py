@@ -34,7 +34,7 @@ class file_hander:
         self.csv_filename = fnmatch.filter(files, '*csv*')
 
     def parse_csv_file(self):
-        with open(self.csv_filename, 'rb') as csvfile:
+        with open(self.csv_filename[0], 'rb') as csvfile:
             spamreader = csv.reader(csvfile, delimiter=',', quotechar='|')
             for row in spamreader:
                 print ', '.join(row)
