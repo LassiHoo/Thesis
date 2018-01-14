@@ -9,7 +9,7 @@ from Graph import graph
 
 
 def main():
-    
+
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     transmit_log_file = file_hander("transmitLogfile.dat")
