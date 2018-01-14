@@ -35,7 +35,7 @@ class file_hander:
 
     def seek_data_from_csv_file(self, value ):
 
-        csv_file = csv.reader(open('test.csv', "rb"), delimiter=",")
+        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
         print(value)
         # loop through csv list
         for row in csv_file:
