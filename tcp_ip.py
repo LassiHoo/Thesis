@@ -23,6 +23,7 @@ class ssh_connection:
         try:
             self.connection.sendline('sudo ./enableWriteAccess.sh')
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
+            self.connection.sendline('sudo rm *.csv')
             self.connection.sendline('sudo ./util_pkt_logger')
         except pxssh.ExceptionPxssh as e:
             print("start tcp dump failed.")
@@ -42,8 +43,6 @@ class ssh_connection:
             print(scp)
             os.system(scp)
             time.sleep(5)
-            self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
-            self.connection.sendline('sudo rm *.csv')
         except pxssh.ExceptionPxssh as e:
             print("pxssh failed on fet tcp dump file.")
             print(e)

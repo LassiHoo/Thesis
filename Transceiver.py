@@ -36,10 +36,10 @@ def main():
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(10)
     lpwa_interface.stop_gateway_logging()
-    transmit_log_file.stroredata()
-    transmitlog = transmit_log_file.readfile(transmit_log_file.transmitterFileName)
+    transmit_log_file.strore_data()
+    transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
     for i in transmitlog:
         print i
-
+    transmit_log_file.return_csv_filename()
 if __name__ == "__main__":
     main()

@@ -1,4 +1,5 @@
 import pickle
+import os
 
 
 class file_hander:
@@ -10,12 +11,12 @@ class file_hander:
         tuple = timestamp,data
         self.transmitDataList.append(tuple)
 
-    def stroredata(self):
+    def strore_data(self):
         source = open(self.transmitterFileName,"wb")
         pickle.dump(self.transmitDataList, source)
         source.close()
 
-    def readfile(self, filename):
+    def read_file(self, filename):
         try:
             file = open(filename, "rb")
             read = pickle.load(file)
@@ -23,3 +24,7 @@ class file_hander:
         except IOError:
             print("Could not open the file")
             return False
+
+    def return_csv_filename(self):
+        file_list = os.listdir()
+        print "finding csv file", file_list.index('csv')
