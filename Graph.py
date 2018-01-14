@@ -4,7 +4,7 @@ from plotly.graph_objs import *
 
 class graph:
     def __init__(self):
-        plotly.tools.set_credentials_file(username='LassiPee', api_key='glb2jujea5')
+        plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
     def plot(self):
 
