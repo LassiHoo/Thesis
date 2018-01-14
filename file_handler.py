@@ -40,7 +40,7 @@ class file_hander:
         # loop through csv list
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
-            returnlist = row[3]
+            returnlist = row[2]
             #print(row[3])
             #if value == row[16]:
             #    print row

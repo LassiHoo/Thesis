@@ -41,10 +41,11 @@ def main():
     transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
     transmit_log_file.return_csv_filename()
     gatewaylist=transmit_log_file.seek_data_from_csv_file("delay test gateway delay")
+
     for i in gatewaylist:
         print ("gatewaylist", i)
-
     r=0
+    i=0
     for i in transmitlog:
         print ("transmitlog",i[0])
         tuple = i[0],gatewaylist[r]
