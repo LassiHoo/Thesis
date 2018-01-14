@@ -51,7 +51,7 @@ def main():
         print ("transmitlog",i[0])
         tuple = t[0],gatewaylist[r]
         delays.append(tuple)
-        r = r + 1
+        r = r +1
         #transmit_log_file.seek_data_from_csv_file(i[1])
     print("testing delays:")
 
