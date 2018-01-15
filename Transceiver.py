@@ -28,12 +28,13 @@ def main():
     #while (timenow.microseconds < transmit_settings.startTime):
     #    print( "waiting for start time, time now: ",timenow.microseconds," start time ",transmit_settings.startTime)
     #    timenow = datetime.now()
-
-    for i in range (0, transmit_settings.sendCount):
+    trdelay = []
+    for i in range (0, 3):
          time.sleep(transmit_settings.sendInterval)
-         date = datetime.datetime.now()
+         date = datetime.time.now()
          wapice_test_line_hex = hex(random.randint(0,20))[2:]
          transmit_log_file.addTxData(wapice_test_line_hex,date.microsecond)
+         trdelay.append(date.microsecond)
          lpwa_interface.transmit(wapice_test_line_hex)
     time.sleep(10)
     lpwa_interface.stop_gateway_logging()
@@ -59,7 +60,7 @@ def main():
     r = 0
     transmitlogint = [int(d) for d in transmitlog[0]]
     gatewaylist = [int(e) for e in gatewaylist]
-    for f in transmitlogint:
+    for f in trdelay:
         result = gatewaylist[r] - f
         print (gatewaylist[r], " - " , f," = ",result )
         transmissiondelay.append(result)
