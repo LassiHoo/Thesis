@@ -41,11 +41,15 @@ class file_hander:
         for row in csv_file:
             if row[0] != "gateway ID":
                 print(row[2])
-                perse, millisecond = row[2].split(".")
+                rest, millisecond = row[2].split(".")
                 print (millisecond)
-                ''.join(c for c in millisecond if c != 'Z')
-                print(millisecond)
-                returnlist.append(millisecond)
+                r=''.join(c for c in millisecond if c != 'Z')
+                print(r)
+                restr,minute,second = rest.split(":")
+                second_to_millisecond = 1000*int(second)
+                minute_to_millisecond = 60*int(minute)*1000
+                total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
+                returnlist.append(total_milliseconds)
         return returnlist
 
 
