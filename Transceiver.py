@@ -74,7 +74,7 @@ def main():
     snr = [float(a) for a in snr]
     for s in snr:
         print(s)
-    #graafi = graph()
-    #graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
+    graafi = graph()
+    graafi.plot(trdelay,snr,trdelay,rssi)
 if __name__ == "__main__":
     main()
