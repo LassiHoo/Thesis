@@ -33,7 +33,7 @@ def main():
          time.sleep(transmit_settings.sendInterval)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
-          wapice_test_line_hex = hex(random.randint(0,20))[2:]
+         wapice_test_line_hex = hex(random.randint(0,20))[2:]
          transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
          trdelay.append(total_milliseconds)
          lpwa_interface.transmit(wapice_test_line_hex)
