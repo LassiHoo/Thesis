@@ -43,7 +43,7 @@ class file_hander:
                 print(row[2])
                 perse, millisecond = row[2].split(".")
                 print (millisecond)
-                ''.join(c for c in millisecond if c.isdigit())
+                ''.join(c for c in millisecond if c != 'Z')
                 print(millisecond)
                 returnlist.append(millisecond)
         return returnlist
