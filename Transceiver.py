@@ -31,7 +31,7 @@ def main():
     trdelay = []
     for i in range (0, 3):
          time.sleep(transmit_settings.sendInterval)
-         date = datetime.datetime.now()
+         date = datetime.datetime.utcnow()
          wapice_test_line_hex = hex(random.randint(0,20))[2:]
          transmit_log_file.addTxData(wapice_test_line_hex,date.microsecond)
          trdelay.append(date.microsecond)
