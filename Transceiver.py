@@ -70,7 +70,7 @@ def main():
     for w in rssi:
         print(w)
     snr = transmit_log_file.seek_SNR_data_from_csv_file()
-    snr = [int(a) for a in snr]
+    snr = [float(a) for a in snr]
     for s in snr:
         print(s)
     #graafi = graph()
