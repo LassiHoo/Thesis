@@ -40,11 +40,11 @@ class file_hander:
         # loop through csv list
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
-            millisecond = row[2].split(".")
+            perse, millisecond = row[2].split(".")
             print (millisecond)
-            ''.join(c for c in millisecond[1] if c.isdigit())
-            print(millisecond[1])
-            returnlist.append(millisecond[1])
+            ''.join(c for c in millisecond if c.isdigit())
+            print(millisecond)
+            returnlist.append(millisecond)
         returnlist.pop(0)
         return returnlist
 
