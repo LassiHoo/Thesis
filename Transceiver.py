@@ -58,7 +58,7 @@ def main():
     print("testing delays:")
     transmissiondelay = []
     r = 0
-    transmitlogint = [int(d) for d in transmitlog[0]]
+    #transmitlogint = [int(d) for d in transmitlog[0]]
     gatewaylist = [int(e) for e in gatewaylist]
     for f in trdelay:
         result = gatewaylist[r] - f
