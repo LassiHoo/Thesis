@@ -52,6 +52,7 @@ class file_hander:
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
             returnlist.append(row[13])
+        returnlist.pop(0)
         return returnlist
 
     def seek_SNR_data_from_csv_file(self):
@@ -62,4 +63,5 @@ class file_hander:
         for row in csv_file:
             # if current rows 2nd value is equal to input, print that row
             returnlist.append(row[14])
+        returnlist.pop(0)
         return returnlist
