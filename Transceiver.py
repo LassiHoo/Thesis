@@ -57,15 +57,22 @@ def main():
     print("testing delays:")
     transmissiondelay = []
     r = 0
-    transmitlogint = [int(i) for i in transmitlog[0]]
-    gatewaylist = [int(i) for i in gatewaylist]
+    transmitlogint = [int(d) for d in transmitlog[0]]
+    gatewaylist = [int(e) for e in gatewaylist]
     for f in transmitlogint:
         result = gatewaylist[r] - f
         print (gatewaylist[r], " - " , f," = ",result )
         transmissiondelay.append(result)
         r=r+1
-
-    graafi = graph()
-    graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
+    rssi = transmit_log_file.seek_RSSI_data_from_csv_file()
+    rssi = [int(e) for e in rssi]
+    for w in rssi:
+        print(w)
+    snr = transmit_log_file.seek_SNR_data_from_csv_file()
+    snr = [int(a) for a in snr]
+    for s in snr:
+        print(s)
+    #graafi = graph()
+    #graafi.plot(transmissiondelay,transmit_log_file.seek_RSSI_data_from_csv_file(),transmissiondelay,transmit_log_file.seek_SNR_data_from_csv_file())
 if __name__ == "__main__":
     main()
