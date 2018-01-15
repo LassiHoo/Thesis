@@ -39,13 +39,13 @@ class file_hander:
         #print(value)
         # loop through csv list
         for row in csv_file:
-            # if current rows 2nd value is equal to input, print that row
-            perse, millisecond = row[2].split(".")
-            print (millisecond)
-            ''.join(c for c in millisecond if c.isdigit())
-            print(millisecond)
-            returnlist.append(millisecond)
-        returnlist.pop(0)
+            if row[0] != "gateway ID":
+                print(row[2])
+                perse, millisecond = row[2].split(".")
+                print (millisecond)
+                ''.join(c for c in millisecond if c.isdigit())
+                print(millisecond)
+                returnlist.append(millisecond)
         return returnlist
 
 
