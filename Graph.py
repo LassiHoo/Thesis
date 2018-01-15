@@ -16,6 +16,8 @@ class graph:
             x2,
             y2
         )
+        print (trace0)
+        print(trace1)
         data = Data([trace0, trace1])
 
         py.plot(data, filename='basic-line')
