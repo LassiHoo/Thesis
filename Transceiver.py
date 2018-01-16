@@ -31,8 +31,9 @@ def main():
     trdelay = []
     transmissioncount=[]
     wapice_test_line_hex = ''
-    for i in range (0, 10):
+    for i in range (0, 5):
          time.sleep(transmit_settings.sendInterval)
+         transmit_settings.sendInterval += 1
          transmissioncount.append(i)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
@@ -69,6 +70,6 @@ def main():
     snr = [float(a) for a in snr]
 
     graafi = graph()
-    graafi.plot(transmissioncount, snr, transmissiondelay, rssi)
+    graafi.plot(transmissioncount, snr, transmissiondelay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()
