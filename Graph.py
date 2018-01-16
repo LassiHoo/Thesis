@@ -13,12 +13,12 @@ class graph:
         print("y2: ", y2)
         print("x2: ", x2)
         trace0 = Scatter(
-            x1,
-            y1
+            x = x1,
+            y = y1
         )
         trace1 = Scatter(
-            x2,
-            y2
+            x = x2,
+            y = y2
         )
         print (trace0)
         print(trace1)
