@@ -59,7 +59,7 @@ def main():
     #transmitlogint = [int(d) for d in transmitlog[0]]
     gatewaylist = [int(e) for e in gatewaylist]
     for f in trdelay:
-        result = ( gatewaylist[r] - f ) / 1000
+        result = gatewaylist[r] - f
         print (gatewaylist[r], " - " , f," = ",result )
         transmissiondelay.append(result)
         r=r+1
