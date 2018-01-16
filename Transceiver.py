@@ -29,8 +29,10 @@ def main():
     #    print( "waiting for start time, time now: ",timenow.microseconds," start time ",transmit_settings.startTime)
     #    timenow = datetime.now()
     trdelay = []
+    transmissioncount=[]
     for i in range (0, 3):
          time.sleep(transmit_settings.sendInterval)
+         transmissioncount.append(i)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
          wapice_test_line_hex = hex(random.randint(0,20))[2:]
@@ -75,6 +77,6 @@ def main():
     for s in snr:
         print(s)
     graafi = graph()
-    graafi.plot(trdelay,snr,trdelay,rssi)
+    graafi.plot(transmissioncount, snr, transmissiondelay, rssi)
 if __name__ == "__main__":
     main()
