@@ -30,13 +30,14 @@ def main():
     #    timenow = datetime.now()
     trdelay = []
     transmissioncount=[]
+    wapice_test_line_hex = ''
     for i in range (0, 10):
          time.sleep(transmit_settings.sendInterval)
          transmissioncount.append(i)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
          add = hex(random.randint(0,20))[2:]
-         wapice_test_line_hex =+ add
+         wapice_test_line_hex += add
          transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
          trdelay.append(total_milliseconds)
          lpwa_interface.transmit(wapice_test_line_hex)
