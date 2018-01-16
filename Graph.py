@@ -8,6 +8,10 @@ class graph:
 
     def plot(self, x1 ,y1, x2, y2):
 
+        print("y1: ",y1)
+        print("x1: ", x1)
+        print("y2: ", y2)
+        print("x2: ", x2)
         trace0 = Scatter(
             x1,
             y1
