@@ -31,9 +31,8 @@ def main():
     trdelay = []
     transmissioncount=[]
     wapice_test_line_hex = ''
-    for i in range (0, 5):
+    for i in range (0, 20):
          time.sleep(transmit_settings.sendInterval)
-         transmit_settings.sendInterval += 1
          transmissioncount.append(i)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
