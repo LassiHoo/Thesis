@@ -64,10 +64,7 @@ def main():
         transmissiondelay.append(result)
         r=r+1
     rssi = transmit_log_file.seek_RSSI_data_from_csv_file()
-    rssi = [int(e) for e in rssi]
     snr = transmit_log_file.seek_SNR_data_from_csv_file()
-    snr = [float(a) for a in snr]
-
     graafi = graph()
     graafi.plot(transmissioncount, snr, transmissiondelay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
