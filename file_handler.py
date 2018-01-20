@@ -100,6 +100,7 @@ class file_hander:
         # print(value)
         # loop through csv list
         for row in csv_file:
+            list = row[15].split('-')
             number = int(list[1][4:6], 16)
             if number == transmissionnumber & row[7]:
                 print ("found number, row: ", row)
@@ -113,6 +114,7 @@ class file_hander:
         # print(value)
         # loop through csv list
         for row in csv_file:
+            list = row[15].split('-')
             number = int(list[1][4:6], 16)
             if number == transmissionnumber & row[7]:
                 snr = float(row[14])
@@ -125,6 +127,7 @@ class file_hander:
         # print(value)
         # loop through csv list
         for row in csv_file:
+            list = row[15].split('-')
             number = int(list[1][4:6], 16)
             if number == transmissionnumber & row[7]:
                 cr = float(row[12])
@@ -137,6 +140,7 @@ class file_hander:
         # print(value)
         # loop through csv list
         for row in csv_file:
+            list = row[15].split('-')
             number = int(list[1][4:6], 16)
             if number == transmissionnumber & row[7]:
                 print ("found number, row: ", row)
