@@ -83,10 +83,10 @@ class file_hander:
                 packet_lost_count += 1
             else:
                 delay.append(found_delay-i)
-                snr.append(self.seek_SNR_data_from_csv_file(transmitnumber))
-                RSSI.append(self.seek_RSSI_data_from_csv_file(transmitnumber))
-                CR.append(self.seek_CR_data_from_csv_file(transmitnumber))
-                SF.append(self.seek_SF_data_from_csv_file(transmitnumber))
+                snr.append(self.seek_SNR_data_from_csv_file(transmitnumber+1))
+                RSSI.append(self.seek_RSSI_data_from_csv_file(transmitnumber+1))
+                CR.append(self.seek_CR_data_from_csv_file(transmitnumber+1))
+                SF.append(self.seek_SF_data_from_csv_file(transmitnumber+1))
             transmitnumber += 1
         if packet_lost_count == 0:
             PER = 0
