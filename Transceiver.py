@@ -65,7 +65,8 @@ def main():
         r=r+1
     rssi = transmit_log_file.seek_RSSI_data_from_csv_file()
     snr = transmit_log_file.seek_SNR_data_from_csv_file()
+    delays = transmit_log_file.calculate_delays(transmitlog)
     graafi = graph()
-    graafi.plot(transmissioncount, snr, transmissiondelay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
+    graafi.plot(transmissioncount, snr, delays, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()

@@ -66,6 +66,17 @@ class file_hander:
                 return total_milliseconds
         return 0
 
+    def calculate_delays(self,transmitlist):
+        transmitnumber = 0
+        delay=[]
+        for i in transmitlist:
+            print ("gateawydelay: ", self.seek_transmissionnumber_delay(transmitnumber)," transmit delay: ", i)
+            delay[transmitnumber] = self.seek_transmissionnumber_delay(transmitnumber) - i
+        return delay
+
+
+
+
 
     def seek_RSSI_data_from_csv_file(self):
         returnlist = []
