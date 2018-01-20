@@ -75,7 +75,7 @@ class file_hander:
             found_delay = self.seek_transmissionnumber_delay(transmitnumber)
             print ("gateawydelay: ", found_delay ," transmit delay: ", i, "transmitnumber", transmitnumber)
             delay.append(found_delay-i)
-            transmitnumber += transmitnumber
+            transmitnumber += 1
         return delay
 
 
