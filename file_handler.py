@@ -53,17 +53,18 @@ class file_hander:
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
         for row in csv_file:
             list = row[15].split('-')
-            number = list[1][4:]
-            print ("csv number: ",number,"seek number: ",transmissionnumber)
-            if number == transmissionnumber:
-                print ("found number, row: ",row)
-                rest, millisecond = row[2].split(".")
-                r = ''.join(c for c in millisecond if c != 'Z')
-                restr, minute, second = rest.split(":")
-                second_to_millisecond = 1000 * int(second)
-                minute_to_millisecond = 60 * int(minute) * 1000
-                total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
-                return total_milliseconds
+            print ( list)
+        #     number = list[1][4:]
+        #     print ("csv number: ",number,"seek number: ",transmissionnumber)
+        #     if number == transmissionnumber:
+        #         print ("found number, row: ",row)
+        #         rest, millisecond = row[2].split(".")
+        #         r = ''.join(c for c in millisecond if c != 'Z')
+        #         restr, minute, second = rest.split(":")
+        #         second_to_millisecond = 1000 * int(second)
+        #         minute_to_millisecond = 60 * int(minute) * 1000
+        #         total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
+        #         return total_milliseconds
         return 0
 
     def calculate_delays(self,transmitlist):
