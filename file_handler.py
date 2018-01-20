@@ -33,22 +33,6 @@ class file_hander:
         print("searching csv files:",test)
         self.csv_filename = fnmatch.filter(files, '*csv*')
 
-    def seek_transmission_delay_data_from_csv_file(self, value):
-        returnlist=[]
-        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        #print(value)
-        # loop through csv list
-        for row in csv_file:
-            if row[0] != "gateway ID":
-                rest, millisecond = row[2].split(".")
-                r=''.join(c for c in millisecond if c != 'Z')
-                restr,minute,second = rest.split(":")
-                second_to_millisecond = 1000*int(second)
-                minute_to_millisecond = 60*int(minute)*1000
-                total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
-                returnlist.append(total_milliseconds)
-        return returnlist
-
     def seek_transmissionnumber_delay(self, transmissionnumber):
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
 
@@ -65,7 +49,11 @@ class file_hander:
                     second_to_millisecond = 1000 * int(second)
                     minute_to_millisecond = 60 * int(minute) * 1000
                     total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
-                    return total_milliseconds
+                    rssi = int(row[13])
+                    cr = float(row[12])
+                    SF = row[11]
+                    snr = float(row[14])
+                    return total_milliseconds, rssi , cr ,SF,snr
         return 0
 
     def calculate_delays(self,transmitlist):
@@ -77,73 +65,19 @@ class file_hander:
         SF = []
         CR = []
         for i in transmitlist:
-            found_delay = self.seek_transmissionnumber_delay(transmitnumber)
+            found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(transmitnumber)
             print ("gateawydelay: ", found_delay ," transmit delay: ", i, "transmitnumber", transmitnumber)
             if ( found_delay == 0):
                 packet_lost_count += 1
             else:
                 delay.append(found_delay-i)
-                snr.append(self.seek_SNR_data_from_csv_file(transmitnumber+1))
-                RSSI.append(self.seek_RSSI_data_from_csv_file(transmitnumber+1))
-                CR.append(self.seek_CR_data_from_csv_file(transmitnumber+1))
-                SF.append(self.seek_SF_data_from_csv_file(transmitnumber+1))
+                snr.append(snr)
+                RSSI.append(rssi)
+                CR.append(cr)
+                SF.append(sf)
             transmitnumber += 1
         if packet_lost_count == 0:
             PER = 0
         else:
             PER =  packet_lost_count/transmitnumber *100
         return delay, PER, snr, RSSI, CR, SF
-
-    def seek_RSSI_data_from_csv_file(self,transmissionnumber):
-        returnlist = []
-        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        # print(value)
-        # loop through csv list
-        for row in csv_file:
-            list = row[15].split('-')
-            number = int(list[1][4:6], 16)
-            if number == transmissionnumber & row[7]:
-                print ("found number, row: ", row)
-                rssi = int(row[13])
-                return rssi
-        return 0
-
-    def seek_SNR_data_from_csv_file(self, transmissionnumber):
-        returnlist = []
-        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        # print(value)
-        # loop through csv list
-        for row in csv_file:
-            list = row[15].split('-')
-            number = int(list[1][4:6], 16)
-            if number == transmissionnumber & row[7]:
-                snr = float(row[14])
-                return snr
-        return 0
-
-    def seek_CR_data_from_csv_file(self, transmissionnumber):
-        returnlist = []
-        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        # print(value)
-        # loop through csv list
-        for row in csv_file:
-            list = row[15].split('-')
-            number = int(list[1][4:6], 16)
-            if number == transmissionnumber & row[7]:
-                cr = float(row[12])
-                return cr
-        return 0
-
-    def seek_SF_data_from_csv_file(self, transmissionnumber):
-        returnlist = []
-        csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
-        # print(value)
-        # loop through csv list
-        for row in csv_file:
-            list = row[15].split('-')
-            number = int(list[1][4:6], 16)
-            if number == transmissionnumber & row[7]:
-                print ("found number, row: ", row)
-                SF = row[11]
-                return SF
-        return 0
