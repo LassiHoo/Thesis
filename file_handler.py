@@ -59,8 +59,8 @@ class file_hander:
     def calculate_delays(self,transmitlist):
         transmitnumber = 0
         packet_lost_count = 0
-        delay=[]
-        snr=[]
+        DELAY=[]
+        SNR=[]
         RSSI=[]
         SF = []
         CR = []
@@ -70,8 +70,8 @@ class file_hander:
             if ( found_delay == 0):
                 packet_lost_count += 1
             else:
-                delay.append(found_delay-i)
-                snr.append(snr)
+                DELAY.append(found_delay-i)
+                SNR.append(snr)
                 RSSI.append(rssi)
                 CR.append(cr)
                 SF.append(sf)
@@ -80,6 +80,6 @@ class file_hander:
             PER = 0
         else:
             PER =  packet_lost_count/transmitnumber *100
-        snr = [float(a) for a in snr]
+        SNR = [float(a) for a in SNR]
         RSSI = [int(b) for b in RSSI]
-        return delay, PER, snr, RSSI, CR, SF
+        return DELAY, PER, SNR, RSSI, CR, SF
