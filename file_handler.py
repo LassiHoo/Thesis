@@ -55,7 +55,7 @@ class file_hander:
         for row in csv_file:
             list = row[15].split('-')
             if list[0] != "payload":
-                number = list[1][4:6]
+                number = int(list[1][4:6],16)
                 print ("csv number: ",number,"seek number: ",transmissionnumber)
                 if number == transmissionnumber:
                     print ("found number, row: ",row)
