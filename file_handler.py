@@ -72,7 +72,7 @@ class file_hander:
         transmitnumber = 0
         delay=[]
         for i in transmitlist:
-            print ("gateawydelay: ", self.seek_transmissionnumber_delay(transmitnumber(transmitnumber))," transmit delay: ", i)
+            print ("gateawydelay: ", self.seek_transmissionnumber_delay(transmitnumber)," transmit delay: ", i)
             delay[transmitnumber] = self.seek_transmissionnumber_delay(transmitnumber) - i
             transmitnumber += transmitnumber 
         return delay
