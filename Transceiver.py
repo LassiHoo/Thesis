@@ -63,10 +63,9 @@ def main():
     #     print (gatewaylist[r], " - " , f," = ",result )
     #     transmissiondelay.append(result)
     #     r=r+1
-    rssi = transmit_log_file.seek_RSSI_data_from_csv_file()
-    snr = transmit_log_file.seek_SNR_data_from_csv_file()
-    delays = transmit_log_file.calculate_delays(trdelay)
+
+    delay, PER, snr, RSSI, CR, SF  = transmit_log_file.calculate_delays(trdelay)
     graafi = graph()
-    graafi.plot(transmissioncount, snr, delays, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
+    graafi.plot(transmissioncount, snr, delay, RSSI, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()
