@@ -51,20 +51,21 @@ class file_hander:
 
     def seek_transmissionnumber_delay(self, transmissionnumber):
         csv_file = csv.reader(open(self.csv_filename[0], "rb"), delimiter=",")
+
         for row in csv_file:
             list = row[15].split('-')
-            print ( list)
-        #     number = list[1][4:]
-        #     print ("csv number: ",number,"seek number: ",transmissionnumber)
-        #     if number == transmissionnumber:
-        #         print ("found number, row: ",row)
-        #         rest, millisecond = row[2].split(".")
-        #         r = ''.join(c for c in millisecond if c != 'Z')
-        #         restr, minute, second = rest.split(":")
-        #         second_to_millisecond = 1000 * int(second)
-        #         minute_to_millisecond = 60 * int(minute) * 1000
-        #         total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
-        #         return total_milliseconds
+            if list[0] != "payload":
+                number = list[1][4:]
+                print ("csv number: ",number,"seek number: ",transmissionnumber)
+                if number == transmissionnumber:
+                    print ("found number, row: ",row)
+                    rest, millisecond = row[2].split(".")
+                    r = ''.join(c for c in millisecond if c != 'Z')
+                    restr, minute, second = rest.split(":")
+                    second_to_millisecond = 1000 * int(second)
+                    minute_to_millisecond = 60 * int(minute) * 1000
+                    total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
+                    return total_milliseconds
         return 0
 
     def calculate_delays(self,transmitlist):
