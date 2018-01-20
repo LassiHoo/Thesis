@@ -57,7 +57,7 @@ class file_hander:
             if list[0] != "payload":
                 number = int(list[1][4:6],16)
                 print ("csv number: ",number,"seek number: ",transmissionnumber)
-                if number == transmissionnumber & row[7] != "CRC_BAD":
+                if number == transmissionnumber and row[7] != "CRC_BAD":
                     print ("found number, row: ",row)
                     rest, millisecond = row[2].split(".")
                     r = ''.join(c for c in millisecond if c != 'Z')
