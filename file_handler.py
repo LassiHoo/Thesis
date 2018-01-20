@@ -49,10 +49,10 @@ class file_hander:
                     second_to_millisecond = 1000 * int(second)
                     minute_to_millisecond = 60 * int(minute) * 1000
                     total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
-                    rssi = int(row[13])
+                    rssi = row[13]
                     cr = row[12]
                     SF = row[11]
-                    snr = float(row[14])
+                    snr = row[14]
                     return total_milliseconds, rssi , cr ,SF,snr
         return 0
 
@@ -80,4 +80,6 @@ class file_hander:
             PER = 0
         else:
             PER =  packet_lost_count/transmitnumber *100
+        snr = [float(a) for a in snr]
+        RSSI = [int(b) for b in RSSI]
         return delay, PER, snr, RSSI, CR, SF
