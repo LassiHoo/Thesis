@@ -58,11 +58,11 @@ def main():
     r = 0
     #transmitlogint = [int(d) for d in transmitlog[0]]
     gatewaylist = [int(e) for e in gatewaylist]
-    for f in trdelay:
-        result = gatewaylist[r] - f
-        print (gatewaylist[r], " - " , f," = ",result )
-        transmissiondelay.append(result)
-        r=r+1
+    # for f in trdelay:
+    #     result = gatewaylist[r] - f
+    #     print (gatewaylist[r], " - " , f," = ",result )
+    #     transmissiondelay.append(result)
+    #     r=r+1
     rssi = transmit_log_file.seek_RSSI_data_from_csv_file()
     snr = transmit_log_file.seek_SNR_data_from_csv_file()
     delays = transmit_log_file.calculate_delays(trdelay)
