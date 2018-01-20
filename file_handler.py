@@ -50,7 +50,7 @@ class file_hander:
                     minute_to_millisecond = 60 * int(minute) * 1000
                     total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
                     rssi = int(row[13])
-                    cr = float(row[12])
+                    cr = row[12]
                     SF = row[11]
                     snr = float(row[14])
                     return total_milliseconds, rssi , cr ,SF,snr
