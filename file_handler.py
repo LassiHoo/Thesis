@@ -76,22 +76,23 @@ class file_hander:
             print(index,item)
             found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(index)
             print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
+            SNR.append(snr)
+            RSSI.append(rssi)
+            CR.append(cr)
+            SF.append(sf)
             if ( found_delay != 0):
                 DELAY.append(found_delay - item)
-                SNR.append(snr)
-                RSSI.append(rssi)
-                CR.append(cr)
-                SF.append(sf)
                 if packet_lost_count == 0:
                     per = 0
                 else:
                     per = packet_lost_count / (index+1) * 100.0
                 PER.append(per)
-
             else:
+                DELAY.append(0)
                 packet_lost_count += 1
-                per = packet_lost_count / index * 100.0
+                per = packet_lost_count / (index+1) * 100.0
                 PER.append(per)
+            print("PER: ", PER)
         SNR = [float(a) for a in SNR]
         RSSI = [int(b) for b in RSSI]
         return DELAY, SNR, RSSI, CR, SF, PER
