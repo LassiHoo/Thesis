@@ -54,7 +54,13 @@ class file_hander:
                     SF = row[11]
                     snr = row[14]
                     return total_milliseconds, rssi , cr ,SF,snr
-        return 0
+        print("packer lost!!!!!!!!!!!!!!!!!!!")
+        total_milliseconds = 0
+        rssi = ""
+        cr = ""
+        SF = ""
+        snr = ""
+        return total_milliseconds, rssi, cr, SF, snr
 
     def calculate_delays(self,transmitlist):
         DELAY=[]
@@ -67,9 +73,9 @@ class file_hander:
         packet_lost_count = 0
         transmit_number = 0
         for index, item in enumerate(transmitlist):
-            #print(index,item)
+            print(index,item)
             found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(index)
-            #print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
+            print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
             if ( found_delay != 0):
                 DELAY.append(found_delay - item)
                 SNR.append(snr)

@@ -53,7 +53,7 @@ def main():
     transmit_log_file.return_csv_filename()
 
     print("testing delays:")
-    delay, snr, rssi, cf, sf, per  = transmit_log_file.calculate_delays(trdelay)
+    delay, snr, rssi, cf, sf, per = transmit_log_file.calculate_delays(trdelay)
     print("delay: ",delay)
     print("rssi: ", rssi)
     print("cf: ", cf)
