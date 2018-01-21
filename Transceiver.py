@@ -32,9 +32,9 @@ def main():
     interval_delay=[]
     transmissioncount=[]
     wapice_test_line_hex = ''
-    for i in range (0, 5):
+    for i in range (0, 18):
 
-         sleep_time = (transmit_settings.sendInterval - int(i)*10)/1000.0
+         sleep_time = (transmit_settings.sendInterval - int(i)*100)/1000.0
          print("sleep time: ",sleep_time)
          time.sleep(sleep_time)
          interval_delay.append(sleep_time)
@@ -67,6 +67,6 @@ def main():
     print("PER", per)
     print("transmission count: ", transmissioncount)
     graafi = graph()
-    graafi.plot(transmissioncount, snr, delay, rssi,interval_delay, 'snr(dB)', 'delay (ms)', 'rssi(dBm)', "interval delay (ms)")
+    graafi.plot(transmissioncount, snr, delay, rssi,interval_delay, 'snr(dB)', 'delay (ms)', 'rssi(dBm)', "interval delay (s)")
 if __name__ == "__main__":
     main()
