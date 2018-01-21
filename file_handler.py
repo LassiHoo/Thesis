@@ -67,15 +67,14 @@ class file_hander:
         for i in transmitlist:
             found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(transmitnumber)
             print ("gateawydelay: ", found_delay ," transmit delay: ", i, "transmitnumber", transmitnumber)
-            if ( found_delay == 0):
-                #packet_lost_count += 1
-            else:
-                DELAY.append(found_delay-i)
+            if ( found_delay != 0):
+                DELAY.append(found_delay - i)
                 SNR.append(snr)
                 RSSI.append(rssi)
                 CR.append(cr)
                 SF.append(sf)
             transmitnumber += 1
+
         # if packet_lost_count == 0:
         #     PER = 0
         # else:
