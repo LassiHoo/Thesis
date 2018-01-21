@@ -83,5 +83,5 @@ class file_hander:
              PER =  packet_lost_count/transmit_number *100
         # SNR = [float(a) for a in SNR]
         # RSSI = [int(b) for b in RSSI]
-        # return DELAY, SNR, RSSI, CR, SF
-        return PER
+        return DELAY, SNR, RSSI, CR, SF, PER
+       #return PER
