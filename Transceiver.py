@@ -67,6 +67,7 @@ def main():
     print("PER", per)
     print("transmission count: ", transmissioncount)
     graafi = graph()
-    graafi.plot(transmissioncount, snr, delay, rssi,interval_delay, 'snr(dB)', 'delay (ms)', 'rssi(dBm)', "interval delay (s)")
+    graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
+                "interval delay (s)", 'PER (%)')
 if __name__ == "__main__":
     main()

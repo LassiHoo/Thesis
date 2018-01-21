@@ -8,7 +8,7 @@ class graph:
     def __init__(self):
         plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
-    def plot(self, x, y1, y2, y3, y4, y1_name, y2_name, y3_name, y4_name):
+    def plot(self, x, y1, y2, y3, y4, y5, y1_name, y2_name, y3_name, y4_name, y5_name):
 
         # print("x: ",x)
         # print("y1: ", y1)
@@ -54,11 +54,17 @@ class graph:
             y=y4,
             name = y4_name,
         )
-        fig = tools.make_subplots(rows=4, cols=1)
+        trace5 = Scatter(
+            x=x,
+            y=y5,
+            name=y5_name,
+        )
+        fig = tools.make_subplots(rows=5, cols=1)
 
         fig.append_trace(trace3, 1, 1)
         fig.append_trace(trace2, 2, 1)
         fig.append_trace(trace1, 3, 1)
         fig.append_trace(trace4, 4, 1)
+        fig.append_trace(trace5, 5, 1)
         fig['layout'].update(height=600, width=600, title='Stacked subplots')
-        py.plot(fig, filename='stacked-subplots')
+        py.plot(fig,,
