@@ -56,10 +56,10 @@ class file_hander:
                     return total_milliseconds, rssi , cr ,SF,snr
         print("packer lost!!!!!!!!!!!!!!!!!!!")
         total_milliseconds = 0
-        rssi = ""
+        rssi = "-40"
         cr = ""
         SF = ""
-        snr = ""
+        snr = "0.0"
         return total_milliseconds, rssi, cr, SF, snr
 
     def calculate_delays(self,transmitlist):
@@ -86,11 +86,13 @@ class file_hander:
                     per = 0
                 else:
                     per = packet_lost_count / (index+1) * 100.0
+                    print ("packet ok, packet lost count", packet_lost_count, "index: ", index + 1, "per: ", per)
                 PER.append(per)
             else:
                 DELAY.append(0)
                 packet_lost_count += 1
                 per = packet_lost_count / (index+1) * 100.0
+                print ("packet nok, packet lost count", packet_lost_count,"index: ",index+1,"per: ", per)
                 PER.append(per)
             print("PER: ", PER)
         SNR = [float(a) for a in SNR]
