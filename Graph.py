@@ -59,6 +59,6 @@ class graph:
         fig.append_trace(trace3, 1, 1)
         fig.append_trace(trace2, 2, 1)
         fig.append_trace(trace1, 3, 1)
-        fig.append_trace(trace3, 4, 1)
+        fig.append_trace(trace4, 4, 1)
         fig['layout'].update(height=600, width=600, title='Stacked subplots')
         py.iplot(fig, filename='stacked-subplots')

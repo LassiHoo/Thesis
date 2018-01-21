@@ -32,7 +32,7 @@ def main():
     interval_delay=[]
     transmissioncount=[]
     wapice_test_line_hex = ''
-    for i in range (0, 20):
+    for i in range (0, 5):
 
          sleep_time = (transmit_settings.sendInterval - int(i)*10)/1000.0
          print("sleep time: ",sleep_time)
