@@ -54,8 +54,10 @@ def main():
 
     print("testing delays:")
 
-    delay, snr, RSSI, CR, SF  = transmit_log_file.calculate_delays(trdelay)
-    graafi = graph()
-    graafi.plot(transmissioncount, snr, delay, RSSI, 'snr(dB)', 'delay (ms)','rssi(dBm)')
+    #delay, snr, RSSI, CR, SF  = transmit_log_file.calculate_delays(trdelay)
+    delay = transmit_log_file.calculate_delays(trdelay)
+    print(delay)
+    #graafi = graph()
+    #graafi.plot(transmissioncount, snr, delay, RSSI, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()
