@@ -69,7 +69,7 @@ class file_hander:
         SF = []
         CR = []
         PER = []
-        per = 0
+        per = 0.0
         packet_lost_count = 0
         transmit_number = 0
         for index, item in enumerate(transmitlist):
@@ -83,15 +83,15 @@ class file_hander:
             if ( found_delay != 0):
                 DELAY.append(found_delay - item)
                 if packet_lost_count == 0:
-                    per = 0
+                    per = 0.0
                 else:
-                    per = packet_lost_count / (index+1) * 100.0
+                    per = float( float( packet_lost_count ) / float(index+1) * 100.0 )
                     print ("packet ok, packet lost count", packet_lost_count, "index: ", index + 1, "per: ", per)
                 PER.append(per)
             else:
                 DELAY.append(0)
                 packet_lost_count += 1
-                per = packet_lost_count / (index+1) * 100.0
+                per = float(float(packet_lost_count) / float(index + 1) * 100.0)
                 print ("packet nok, packet lost count", packet_lost_count,"index: ",index+1,"per: ", per)
                 PER.append(per)
             print("PER: ", PER)
