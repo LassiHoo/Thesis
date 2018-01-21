@@ -37,22 +37,22 @@ class graph:
         trace1 = go.Scatter(
             x= x,
             y= y1,
-            name=y1_name
+            name=y1_name,
         )
         trace2 = go.Scatter(
             x=x,
             y=y2,
-            name = y2_name
+            name = y2_name,
         )
         trace3 = go.Scatter(
             x=x,
             y=y3,
-            name = y3_name
+            name = y3_name,
         )
         trace4 = go.Scatter(
             x=x,
             y=y4,
-            name = y4_name
+            name = y4_name,
         )
         fig = tools.make_subplots(rows=4, cols=1)
 

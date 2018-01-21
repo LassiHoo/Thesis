@@ -46,7 +46,7 @@ def main():
          transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
          trdelay.append(total_milliseconds)
          lpwa_interface.transmit(wapice_test_line_hex)
-    time.sleep(10)
+    time.sleep(5)
     lpwa_interface.stop_gateway_logging()
     transmit_log_file.strore_data()
 

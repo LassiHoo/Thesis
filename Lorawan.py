@@ -98,17 +98,17 @@ class LoraWan():
         self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
     def initInterface(self):
         for i in self.__initcommands:
-            time.sleep(5)
+            time.sleep(2)
             print(i)
             self.__loraWanCom.write(i)
-        time.sleep(10)
+        time.sleep(5)
 
     def start_gateway_logging(self):
         # log into gateway and start to tcp dump
 
         self.ssh.Login('192.168.0.119', 'pi', 'raspberry')
         self.ssh.StartTCPdump("testfile.dat")
-        time.sleep(10)
+        time.sleep(5)
 
     def stop_gateway_logging(self):
         # log into gateway and start to tcp dump
