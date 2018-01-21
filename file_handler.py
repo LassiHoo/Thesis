@@ -62,6 +62,8 @@ class file_hander:
         RSSI=[]
         SF = []
         CR = []
+        PER = []
+        per = 0
         packet_lost_count = 0
         transmit_number = 0
         for index, item in enumerate(transmitlist):
@@ -74,13 +76,15 @@ class file_hander:
                 RSSI.append(rssi)
                 CR.append(cr)
                 SF.append(sf)
+                if packet_lost_count == 0:
+                    per = 0
+                else:
+                    per = packet_lost_count / index * 100
+                PER.append(per)
             else:
                 packet_lost_count += packet_lost_count
-                transmit_number = index
-        if packet_lost_count == 0:
-             PER = 0
-        else:
-             PER =  packet_lost_count/transmit_number *100
+                per = packet_lost_count / index * 100
+                PER.append(per)
         SNR = [float(a) for a in SNR]
         RSSI = [int(b) for b in RSSI]
         return DELAY, SNR, RSSI, CR, SF, PER

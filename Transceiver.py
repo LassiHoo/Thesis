@@ -58,9 +58,10 @@ def main():
     print("rssi: ", rssi)
     print("cf: ", cf)
     print("sf: ", sf)
-    print("delay: ", snr)
+    print("snr: ", snr)
     print("PER", per)
-    graafi = graph()
-    graafi.plot(transmissioncount, snr, delay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
+    print("transmission count: ", transmissioncount)
+    #graafi = graph()
+    #graafi.plot(transmissioncount, snr, delay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()
