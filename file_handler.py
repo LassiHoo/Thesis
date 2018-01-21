@@ -57,23 +57,20 @@ class file_hander:
         return 0
 
     def calculate_delays(self,transmitlist):
-        transmitnumber = 0
-        packet_lost_count = 0
         DELAY=[]
         SNR=[]
         RSSI=[]
         SF = []
         CR = []
-        for i in transmitlist:
-            found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(transmitnumber)
-            print ("gateawydelay: ", found_delay ," transmit delay: ", i, "transmitnumber", transmitnumber)
+        for index, item in enumerate(transmitlist):
+            found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(index)
+            print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
             if ( found_delay != 0):
-                DELAY.append(found_delay - i)
+                DELAY.append(found_delay - item)
                 SNR.append(snr)
                 RSSI.append(rssi)
                 CR.append(cr)
                 SF.append(sf)
-            transmitnumber += 1
 
         # if packet_lost_count == 0:
         #     PER = 0
