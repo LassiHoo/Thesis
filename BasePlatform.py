@@ -8,7 +8,7 @@ class basePlatform:
     initList=[]
     commandIndex=[]
     # milliseconds
-    sendInterval = 2000
+    sendInterval = 4000
     sendCount = 10
     payLoadLenght = 10
     startTime = ""
