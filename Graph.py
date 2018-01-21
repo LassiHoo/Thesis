@@ -1,8 +1,9 @@
 import plotly
 from plotly import tools
-import plotly.plotly as py
 from plotly.graph_objs import *
-import plotly.graph_objs as go
+import plotly.plotly as py
+import numpy as np
+
 
 class graph:
     def __init__(self):
@@ -34,6 +35,12 @@ class graph:
         # data = Data([trace0, trace1,trace2])
         #
         # py.plot(data, filename='basic-line')
+        cumsum = np.cumsum(y2)
+
+        trace6 = Scatter(x=[i for i in range(len(cumsum))], y=10 * cumsum / np.linalg.norm(cumsum),
+                           marker=dict(color='rgb(150, 25, 120)'))
+
+
         trace1 = Scatter(
             x= x,
             y= y1,
@@ -66,5 +73,6 @@ class graph:
         fig.append_trace(trace1, 3, 1)
         fig.append_trace(trace4, 4, 1)
         fig.append_trace(trace5, 5, 1)
+        fig.append_trace(trace6, 6, 1)
         fig['layout'].update(height=600, width=600, title='Stacked subplots')
         py.plot(fig, filename='stacked-subplots')
