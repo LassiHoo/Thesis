@@ -35,7 +35,7 @@ def main():
     for i in range (0, 18):
 
          #sleep_time = (transmit_settings.sendInterval - int(i)*100)/1000.0
-         sleep_time = (transmit_settings.sendInterval)
+         sleep_time = (transmit_settings.sendInterval/1000.0)
          print("sleep time: ",sleep_time)
          time.sleep(sleep_time)
          interval_delay.append(sleep_time)
