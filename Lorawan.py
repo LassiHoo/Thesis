@@ -98,10 +98,10 @@ class LoraWan():
         self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
     def initInterface(self):
         for i in self.__initcommands:
-            time.sleep(3)
+            time.sleep(4)
             print(i)
             self.__loraWanCom.write(i)
-        time.sleep(10)
+        time.sleep(7)
 
     def start_gateway_logging(self):
         # log into gateway and start to tcp dump
