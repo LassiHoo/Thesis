@@ -85,7 +85,7 @@ class file_hander:
                 if packet_lost_count == 0:
                     per = 0
                 else:
-                    per = packet_lost_count / index * 100
+                    per = packet_lost_count / (index+1) * 100
                 PER.append(per)
             else:
                 packet_lost_count += packet_lost_count
