@@ -63,19 +63,21 @@ class file_hander:
         SF = []
         CR = []
         for index, item in enumerate(transmitlist):
-            found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(index)
-            print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
-            if ( found_delay != 0):
-                DELAY.append(found_delay - item)
-                SNR.append(snr)
-                RSSI.append(rssi)
-                CR.append(cr)
-                SF.append(sf)
+            print(index,item)
+            # found_delay, rssi,cr,sf,snr = self.seek_transmissionnumber_delay(index)
+            # print ("gateawydelay: ", found_delay ," transmit delay: ", item, "transmitnumber", index)
+            # if ( found_delay != 0):
+            #     DELAY.append(found_delay - item)
+            #     SNR.append(snr)
+            #     RSSI.append(rssi)
+            #     CR.append(cr)
+            #     SF.append(sf)
 
         # if packet_lost_count == 0:
         #     PER = 0
         # else:
         #     PER =  packet_lost_count/transmitnumber *100
-        SNR = [float(a) for a in SNR]
-        RSSI = [int(b) for b in RSSI]
-        return DELAY, SNR, RSSI, CR, SF
+        # SNR = [float(a) for a in SNR]
+        # RSSI = [int(b) for b in RSSI]
+        # return DELAY, SNR, RSSI, CR, SF
+        return 0
