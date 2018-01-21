@@ -34,22 +34,22 @@ class graph:
         # data = Data([trace0, trace1,trace2])
         #
         # py.plot(data, filename='basic-line')
-        trace1 = go.Scatter(
+        trace1 = Scatter(
             x= x,
             y= y1,
             name=y1_name,
         )
-        trace2 = go.Scatter(
+        trace2 = Scatter(
             x=x,
             y=y2,
             name = y2_name,
         )
-        trace3 = go.Scatter(
+        trace3 = Scatter(
             x=x,
             y=y3,
             name = y3_name,
         )
-        trace4 = go.Scatter(
+        trace4 = Scatter(
             x=x,
             y=y4,
             name = y4_name,
