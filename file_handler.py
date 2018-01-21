@@ -86,12 +86,14 @@ class file_hander:
                     per = 0.0
                 else:
                     per = float( float( packet_lost_count ) / float(index+1.0) * 100.0 )
+                    format(per,'.1f' )
                     print ("packet ok, packet lost count", packet_lost_count, "index: ", index + 1, "per: ", per)
                 PER.append(per)
             else:
                 DELAY.append(0)
                 packet_lost_count += 1.0
                 per = float(float(packet_lost_count) / float(index + 1.0) * 100.0)
+                format(per, '.1f')
                 print ("packet nok, packet lost count", packet_lost_count,"index: ",index+1,"per: ", per)
                 PER.append(per)
             print("PER: ", PER)
