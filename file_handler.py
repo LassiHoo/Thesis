@@ -85,11 +85,12 @@ class file_hander:
                 if packet_lost_count == 0:
                     per = 0
                 else:
-                    per = packet_lost_count / (index+1) * 100
+                    per = packet_lost_count / (index+1) * 100.0
                 PER.append(per)
+
             else:
-                packet_lost_count += packet_lost_count
-                per = packet_lost_count / index * 100
+                packet_lost_count += 1
+                per = packet_lost_count / index * 100.0
                 PER.append(per)
         SNR = [float(a) for a in SNR]
         RSSI = [int(b) for b in RSSI]
