@@ -2,8 +2,7 @@ import pickle
 import os
 import fnmatch
 import csv
-import numpy as np
-import matplotlib.pyplot as plt
+
 
 class file_hander:
 
@@ -63,14 +62,6 @@ class file_hander:
         SF = ""
         snr = "0.0"
         return total_milliseconds, rssi, cr, SF, snr
-
-    def ccdf_calculation(self,input_data):
-        # sort the data:
-        data_sorted = np.sort(input_data)
-
-        # calculate the proportional values of samples
-        p = 1. * np.arange(len(input_data)) / (len(input_data) - 1)
-        return data_sorted, p
 
     def calculate_delays(self,transmitlist):
         DELAY=[]
