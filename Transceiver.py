@@ -60,7 +60,7 @@ def main():
     print("sf: ", sf)
     print("delay: ", snr)
     print("PER", per)
-    #graafi = graph()
-    #graafi.plot(transmissioncount, snr, delay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
+    graafi = graph()
+    graafi.plot(transmissioncount, snr, delay, rssi, 'snr(dB)', 'delay (ms)','rssi(dBm)')
 if __name__ == "__main__":
     main()
