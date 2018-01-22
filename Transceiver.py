@@ -70,6 +70,6 @@ def main():
     graafi = graph()
     graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
                 "interval delay (s)", 'PER (%)')
-    graafi.ccdf(delay)
+    graafi.ccdf(delay, interval_delay, "transmission delay", "interval delay")
 if __name__ == "__main__":
     main()
