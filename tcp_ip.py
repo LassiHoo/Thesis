@@ -31,14 +31,14 @@ class ssh_connection:
     def StopTCPdump(self):
         try:
             self.connection.sendline("\x03")
-            time.sleep(10)
+            time.sleep(5)
         except pxssh.ExceptionPxssh as e:
             print("stop tcp dump failed.")
             print(e)
 
     def GetTCPdumpFile(self, username, filename,localhost):
         try:
-            scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + filename + " ."
+            scp = 'sshpass -p "raspberry" '+' scp '+ username + '@' + localhost + ":" + 'github/lora_gateway/util_pkt_logger/' + "\*.csv " + "."
             print(scp)
             os.system(scp)
             time.sleep(5)

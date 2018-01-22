@@ -52,24 +52,24 @@ def main():
     transmit_log_file.strore_data()
 
 
-    #
-    #
-    # transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
-    #
-    # transmit_log_file.return_csv_filename()
-    #
-    # print("testing delays:")
-    # delay, snr, rssi, cf, sf, per = transmit_log_file.calculate_delays(trdelay)
-    # print("delay: ",delay)
-    # print("rssi: ", rssi)
-    # print("cf: ", cf)
-    # print("sf: ", sf)
-    # print("snr: ", snr)
-    # print("PER", per)
-    # print("transmission count: ", transmissioncount)
-    # graafi = graph()
-    # graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
-    #             "interval delay (s)", 'PER (%)')
-    # graafi.ccdf(delay, interval_delay, "transmission delay", "interval delay")
+
+
+    transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
+
+    transmit_log_file.return_csv_filename()
+
+    print("testing delays:")
+    delay, snr, rssi, cf, sf, per = transmit_log_file.calculate_delays(trdelay)
+    print("delay: ",delay)
+    print("rssi: ", rssi)
+    print("cf: ", cf)
+    print("sf: ", sf)
+    print("snr: ", snr)
+    print("PER", per)
+    print("transmission count: ", transmissioncount)
+    graafi = graph()
+    graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
+                "interval delay (s)", 'PER (%)')
+    graafi.ccdf(delay, interval_delay, "transmission delay", "interval delay")
 if __name__ == "__main__":
     main()
