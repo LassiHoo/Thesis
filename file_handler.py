@@ -47,8 +47,8 @@ class file_hander:
                     rest, millisecond = row[2].split(".")
                     r = ''.join(c for c in millisecond if c != 'Z')
                     restr, minute, second = rest.split(":")
-                    second_to_millisecond = 1000 * int(second)
-                    minute_to_millisecond = 60 * int(minute) * 1000
+                    second_to_millisecond = 1000.0 * int(second)
+                    minute_to_millisecond = 60.0 * int(minute) * 1000
                     total_milliseconds = int(r) + minute_to_millisecond + second_to_millisecond
                     rssi = row[13]
                     cr = row[12]
@@ -56,7 +56,7 @@ class file_hander:
                     snr = row[14]
                     return total_milliseconds, rssi , cr ,SF,snr
         print("packer lost!!!!!!!!!!!!!!!!!!!")
-        total_milliseconds = 0
+        total_milliseconds = 0.0
         rssi = "-150"
         cr = ""
         SF = ""
