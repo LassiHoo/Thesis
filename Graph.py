@@ -11,9 +11,10 @@ class graph:
         plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
     def ccdf(self,datain):
+
         cumsum = np.cumsum(datain)
 
-        trace = Scatter(x=[i for i in range(len(cumsum))], y=10 * cumsum / np.linalg.norm(cumsum),
+        trace = Scatter(x=[i for i in range(len(cumsum))], y= 10.0 * cumsum / np.linalg.norm(cumsum),
                         marker=dict(color='rgb(150, 25, 120)'))
         layout = go.Layout(
             title="Cumulative Distribution Function"
