@@ -31,9 +31,9 @@ class graph:
         trace1 = Scatter(
             x=cdfx,
             y=cdfy,
-            name=name1
+            name=name1,
         )
-        cdfx2 = np.sort(datain)
+        cdfx2 = np.sort(datain2)
         cdfy2 = np.linspace(1 / len(datain2), 1.0, len(datain2))
         # plot the CDF
         trace2 = Scatter(
