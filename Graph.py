@@ -11,17 +11,29 @@ class graph:
         plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
     def ccdf(self,datain):
-
-        cumsum = np.cumsum(datain)
-
-        trace = Scatter(x=[i for i in range(len(cumsum))], y= 10.0 * cumsum / np.linalg.norm(cumsum),
-                        marker=dict(color='rgb(150, 25, 120)'))
-        layout = go.Layout(
-            title="Cumulative Distribution Function"
+        #
+        # cumsum = np.cumsum(datain)
+        #
+        # trace = Scatter(x=[i for i in range(len(cumsum))], y= 10.0 * cumsum / np.linalg.norm(cumsum),
+        #                 marker=dict(color='rgb(150, 25, 120)'))
+        # layout = go.Layout(
+        #     title="Cumulative Distribution Function"
+        # )
+        #
+        # fig = go.Figure(data=go.Data([trace]), layout=layout)
+        # py.plot(fig, filename='cdf-dataset')
+        #
+        # # retrieve event times and latencies from the file
+        # compute the CDF
+        cdfx = np.sort(datain)
+        cdfy = np.linspace(1 / len(datain), 1.0, len(datain))
+        # plot the CDF
+        trace1 = Scatter(
+            x=cdfx,
+            y=cdfy,
         )
 
-        fig = go.Figure(data=go.Data([trace]), layout=layout)
-        py.plot(fig, filename='cdf-dataset')
+        py.plot(trace1, filename='ccdf')
 
     def plot(self, x, y1, y2, y3, y4, y5, y1_name, y2_name, y3_name, y4_name, y5_name):
 
