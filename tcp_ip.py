@@ -23,7 +23,7 @@ class ssh_connection:
         try:
             self.connection.sendline('sudo ./enableWriteAccess.sh')
             self.connection.sendline('cd github/lora_gateway/util_pkt_logger/')
-            self.connection.sendline('sudo ./util_pkt_logger 1')
+            self.connection.sendline('sudo ./util_pkt_logger')
         except pxssh.ExceptionPxssh as e:
             print("start tcp dump failed.")
             print(e)
