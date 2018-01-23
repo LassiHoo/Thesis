@@ -13,6 +13,7 @@ class loraWanPlatfom(basePlatform):
     Conf = "cnf "
     unConf = "uncnf "
     prlen= "prlen 16"
+    sf8 = "sf sf8"
     portnr = "1 "
     Appeui = "appeui BE7A000000000CDA"
     Appkey = "appkey 660625ED5FC16D37B82A5A0E9042CF0B"
@@ -43,6 +44,7 @@ class loraWanPlatfom(basePlatform):
     def createInitList(self):
         #creating init list
         basePlatform.initList.append(self.RadioSet + self.prlen + self.RLF)
+        basePlatform.initList.append(self.RadioSet + self.sf8 + self.RLF)
         basePlatform.initList.append("sys factoryRESET" + self.RLF)
         basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
         basePlatform.initList.append(self.macSave + self.RLF)
