@@ -9,9 +9,10 @@ from Graph import graph
 
 
 def main():
-
-    transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
+    lpwa_interface.start_gateway_logging()
+    time.sleep(10)
+    transmit_settings = basePlatform()
     transmit_log_file = file_hander("transmitLogfile.dat")
     lpwa_interface.initInterface()
     print( lpwa_interface.transmitFileName )
@@ -20,8 +21,8 @@ def main():
 
 
 
-    lpwa_interface.start_gateway_logging()
-    time.sleep(10)
+
+
 
     timenow = datetime.datetime.now()
     print("waiting for start time, time now: ", timenow.microsecond, " start time ", transmit_settings.startTime)
