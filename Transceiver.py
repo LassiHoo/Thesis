@@ -20,8 +20,8 @@ def main():
 
 
 
-    lpwa_interface.start_gateway_logging()
-    time.sleep(20)
+    #lpwa_interface.start_gateway_logging()
+    #time.sleep(20)
 
     timenow = datetime.datetime.now()
     print("waiting for start time, time now: ", timenow.microsecond, " start time ", transmit_settings.startTime)
@@ -52,7 +52,7 @@ def main():
          trdelay.append(total_milliseconds)
          lpwa_interface.transmit(datemilliseocndhex)
     time.sleep(5)
-    lpwa_interface.stop_gateway_logging()
+    #lpwa_interface.stop_gateway_logging()
     transmit_log_file.strore_data()
 
 
