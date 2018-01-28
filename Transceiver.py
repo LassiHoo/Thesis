@@ -33,7 +33,7 @@ def main():
     transmissioncount=[]
 
     wapice_test_line_hex = ''
-    for i in range (0, 50):
+    for i in range (0, 1000):
 
          #sleep_time = (transmit_settings.sendInterval - int(i)*100)/1000.0
          sleep_time = (transmit_settings.sendInterval/1000.0)
@@ -52,7 +52,7 @@ def main():
          lpwa_interface.transmit(datemilliseocndhex)
     time.sleep(5)
     #lpwa_interface.stop_gateway_logging()
-    transmit_log_file.strore_data()
+    #transmit_log_file.strore_data()
 
 
 
