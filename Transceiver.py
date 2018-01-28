@@ -47,8 +47,8 @@ def main():
          print("date in hex ", datemilliseocndhex)
          add = hex(random.randint(0,20))[2:]
          wapice_test_line_hex = add
-         transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
-         trdelay.append(total_milliseconds)
+         #transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
+         #trdelay.append(total_milliseconds)
          lpwa_interface.transmit(datemilliseocndhex)
     time.sleep(5)
     #lpwa_interface.stop_gateway_logging()
@@ -57,22 +57,22 @@ def main():
 
 
 
-    transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
+    #transmitlog = transmit_log_file.read_file(transmit_log_file.transmitterFileName)
 
-    transmit_log_file.return_csv_filename()
+    #transmit_log_file.return_csv_filename()
 
-    print("testing delays:")
-    delay, snr, rssi, cf, sf, per = transmit_log_file.calculate_delays(trdelay)
-    print("delay: ",delay)
-    print("rssi: ", rssi)
-    print("cf: ", cf)
-    print("sf: ", sf)
-    print("snr: ", snr)
-    print("PER", per)
-    print("transmission count: ", transmissioncount)
-    graafi = graph()
-    graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
-                "interval delay (s)", 'PER (%)')
-    graafi.ccdf(delay, interval_delay, "transmission delay", "interval delay")
+    # print("testing delays:")
+    # delay, snr, rssi, cf, sf, per = transmit_log_file.calculate_delays(trdelay)
+    # print("delay: ",delay)
+    # print("rssi: ", rssi)
+    # print("cf: ", cf)
+    # print("sf: ", sf)
+    # print("snr: ", snr)
+    # print("PER", per)
+    # print("transmission count: ", transmissioncount)
+    # graafi = graph()
+    # graafi.plot(transmissioncount, snr, delay, rssi, interval_delay, per, 'snr(dB)', 'delay (ms)', 'rssi(dBm)',
+    #             "interval delay (s)", 'PER (%)')
+    # graafi.ccdf(delay, interval_delay, "transmission delay", "interval delay")
 if __name__ == "__main__":
     main()
