@@ -41,7 +41,7 @@ def main():
          time.sleep(sleep_time)
          interval_delay.append(sleep_time)
          transmissioncount.append(i)
-         date = datetime.datetime.utcnow()
+         date = datetime.datetime.now()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
          datemilliseocndhex = hex( total_milliseconds)[2:]
          print("date in hex ", datemilliseocndhex)
