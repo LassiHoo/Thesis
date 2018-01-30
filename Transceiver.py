@@ -43,6 +43,7 @@ def main():
          transmissioncount.append(i)
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
+         print("date in dec ", total_milliseconds)
          datemilliseocndhex = hex( total_milliseconds)[2:]
          print("date in hex ", datemilliseocndhex)
          add = hex(random.randint(0,20))[2:]
