@@ -12,7 +12,7 @@ def main():
 
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
-    transmit_log_file = file_hander("transmitLogfile.dat")
+    #transmit_log_file = file_hander("transmitLogfile.dat")
     lpwa_interface.initInterface()
     print( lpwa_interface.transmitFileName )
     while not os.path.exists(lpwa_interface.transmitFileName):
