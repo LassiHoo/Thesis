@@ -36,7 +36,7 @@ def main():
     pi=0
     for i in range (0, 1000):
 
-         dec = (int(pi)*800)/1000.0
+         dec = (int(pi)*100)
          if dec > transmit_settings.sendInterval:
              pi = 0
          sleep_time = (transmit_settings.sendInterval - dec)/1000.0
