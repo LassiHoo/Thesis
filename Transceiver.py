@@ -33,10 +33,14 @@ def main():
     transmissioncount=[]
 
     wapice_test_line_hex = ''
+    pi=0
     for i in range (0, 1000):
 
-         #sleep_time = (transmit_settings.sendInterval - int(i)*100)/1000.0
-         sleep_time = (transmit_settings.sendInterval/1000.0)
+         dec = (int(pi)*100)/1000.0
+         if dec > transmit_settings.sendInterval:
+             pi = 0
+         sleep_time = (transmit_settings.sendInterval - dec)
+         #sleep_time = (transmit_settings.sendInterval/1000.0)
          print("sleep time: ",sleep_time)
          time.sleep(sleep_time)
          interval_delay.append(sleep_time)
@@ -51,6 +55,7 @@ def main():
          #transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
          #trdelay.append(total_milliseconds)
          lpwa_interface.transmit(datemilliseocndhex)
+        pi = pi + 1
     time.sleep(5)
     #lpwa_interface.stop_gateway_logging()
     #transmit_log_file.strore_data()
