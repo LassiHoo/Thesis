@@ -39,7 +39,7 @@ def main():
          dec = (int(pi)*100)/1000.0
          if dec > transmit_settings.sendInterval:
              pi = 0
-         sleep_time = (transmit_settings.sendInterval - dec)
+         sleep_time = (transmit_settings.sendInterval - dec)/1000.0
          #sleep_time = (transmit_settings.sendInterval/1000.0)
          print("sleep time: ",sleep_time)
          time.sleep(sleep_time)
