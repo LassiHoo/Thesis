@@ -48,13 +48,15 @@ def main():
          date = datetime.datetime.utcnow()
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
          print("date in dec ", total_milliseconds)
-         datemilliseocndhex = hex( total_milliseconds)[2:]
-         print("date in hex ", datemilliseocndhex)
+         #datemilliseocndhex = hex( total_milliseconds)[2:]
+         frame = str(total_milliseconds) + ":" + str(i)
+         #print("date in hex ", datemilliseocndhex)
+         frame_hex = frame.encode("utf-8").hex()
          add = hex(random.randint(0,20))[2:]
          wapice_test_line_hex = add
          #transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
          #trdelay.append(total_milliseconds)
-         lpwa_interface.transmit(datemilliseocndhex)
+         lpwa_interface.transmit(frame_hex)
          pi = pi + 1
     time.sleep(5)
     #lpwa_interface.stop_gateway_logging()
