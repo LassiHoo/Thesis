@@ -51,7 +51,7 @@ def main():
          total_milliseconds = ( date.microsecond / 1000) + ( date.minute * 60 * 1000 ) + (date.second * 1000)
          print("date in dec ", total_milliseconds)
          #datemilliseocndhex = hex( total_milliseconds)[2:]
-         frame = str(total_milliseconds) + ":" + str(i)
+         frame = str(total_milliseconds) + ":" + str(i) + ":" + str(sleep_time)
          #print("date in hex ", datemilliseocndhex)
          frame_hex = binascii.hexlify(frame)
          add = hex(random.randint(0,20))[2:]
