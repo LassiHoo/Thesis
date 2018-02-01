@@ -5,6 +5,7 @@ import os
 import datetime
 import random
 import time
+import binascii
 from Graph import graph
 
 
@@ -51,7 +52,7 @@ def main():
          #datemilliseocndhex = hex( total_milliseconds)[2:]
          frame = str(total_milliseconds) + ":" + str(i)
          #print("date in hex ", datemilliseocndhex)
-         frame_hex = frame.encode("utf-8").hex()
+         frame_hex = binascii.hexlify(frame)
          add = hex(random.randint(0,20))[2:]
          wapice_test_line_hex = add
          #transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
