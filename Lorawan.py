@@ -91,10 +91,10 @@ class LoraWan():
 
         self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
         for i in self.__transmitcommands:
-            print i
+            print (i)
         self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
         for i in self.__initcommands:
-            print i
+            print (i)
         self.ssh = ssh_connection()
 
     def transmit(self,string):
