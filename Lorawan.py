@@ -85,6 +85,8 @@ class loraWanPlatfom(basePlatform):
             })
             with open('data.txt', 'w') as self.initFileName:
                 json.dump(self.data, self.initFileName)
+        else:
+            self.data = json.load(self.initFileName)
 
 
 class LoraWan():
@@ -106,11 +108,12 @@ class LoraWan():
 
         # create transmit and initializaiotn files if they do not exists
         self.__platForm.createInitializationFile()
-
-        self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
+        self.__platForm.createLoraWanTransmitlist()
+        self.__platForm.createInitList()
+        self.__transmitcommands = self.__init.transmitterList
         for i in self.__transmitcommands:
             print (i)
-        self.__initcommands = self.__init.readfile(self.__platForm.initFileName)
+        self.__initcommands = self.__init.initList
         for i in self.__initcommands:
             print (i)
         self.ssh = ssh_connection()
