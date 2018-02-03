@@ -9,7 +9,7 @@ class basePlatform:
     commandIndex=[]
     _number_of_transmitters = 0
     _transmitter_id = 0
-    initialization_json = "init.json"
+    initialization_json = "init.jso"
     def __init__(self):
 
         if not os.path.exists(self.initialization_json):

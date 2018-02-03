@@ -13,8 +13,8 @@ class loraWanPlatfom(basePlatform):
 
     TX_COMMAND = 0
     LINE_FEED = 1
-    initFileName = "LPWAinitfile.json"
-    transmitFileName = "LPWATransmitfile.json"
+    initFileName = "LPWAinitfile.jso"
+    transmitFileName = "LPWATransmitfile.jso"
     def __init__(self):
         if not os.path.exists(self.initialization_json):
             #if file does not exists create a one
