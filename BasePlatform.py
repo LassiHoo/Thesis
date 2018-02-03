@@ -35,8 +35,8 @@ class basePlatform:
                 'interval_decrement_milliseconds': 100,
                 'data_content': 'from_diagnostic_frame'
             })
-            with open('data.txt', 'w') as self.initialization_json:
-                json.dump(self.data, self.initialization_json)
+            with open(self.initialization_json, 'w') as outfile:
+                json.dump(self.data, outfile)
         else:
             self.data = json.load(self.intialization_json)
 

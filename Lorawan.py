@@ -82,8 +82,8 @@ class loraWanPlatfom(basePlatform):
                 'sf8' : 'sf sf8',
                 'factoryreset':'sys factoryRESET'
             })
-            with open('data.txt', 'w') as self.initFileName:
-                json.dump(self.data, self.initFileName)
+            with open(self.initialization_json, 'w') as outfile:
+                json.dump(self.data, outfile)
         else:
             self.data = json.load(self.initFileName)
 
