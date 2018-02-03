@@ -46,7 +46,8 @@ class loraWanPlatfom(basePlatform):
             with open(self.transmitFileName, 'w') as outfile:
                 json.dump(self.data, outfile)
         else:
-            self.data = json.load(self.transmitFileName)
+            with open(self.transmitFileName, 'r') as infile:
+                self.data = json.load(infile)
 
     def createLoraWanTransmitlist(self):
         #creating list
