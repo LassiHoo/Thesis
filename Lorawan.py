@@ -49,7 +49,7 @@ class loraWanPlatfom(basePlatform):
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appeui'] + self.data['Lorawan_settings'][0]['Appeui_val'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appkey'] + self.data['Lorawan_settings'][0]['Appkey_val'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevEui'] + self.data['Lorawan_settings'][0]['DevEui_val']+ self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevAddr'] + hex( self.data['Lorawan_settings'][0]['DevAddr_val'])[2:] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevAddr'] + self.data['Lorawan_settings'][0]['DevAddr_val'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['macSave'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['JoinOTaa'])
 
@@ -66,7 +66,7 @@ class loraWanPlatfom(basePlatform):
                 'DevEui': 'deveui ',
                 'DevEui_val':'0004A30B001F3A95',
                 'DevAddr': 'devaddr ',
-                'DevAddr_val':'1',
+                'DevAddr_val':'01',#in hexadecimal form
                 'macSave': 'mac save',
                 'JoinOTaa': 'mac join otaa\r\n',
                 'data_content': 'from_diagnostic_frame',
