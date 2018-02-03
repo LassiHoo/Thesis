@@ -126,16 +126,3 @@ class LoraWan():
             print(i)
             self.__loraWanCom.write(i)
         time.sleep(7)
-
-    def start_gateway_logging(self):
-        # log into gateway and start to tcp dump
-
-        self.ssh.Login('192.168.0.119', 'pi', 'raspberry')
-        self.ssh.StartTCPdump("testfile.dat")
-        time.sleep(5)
-
-    def stop_gateway_logging(self):
-        # log into gateway and start to tcp dump
-        self.ssh.StopTCPdump()
-        self.ssh.GetTCPdumpFile('pi','testfile.dat','192.168.0.119')
-        self.ssh.CloseConnection()

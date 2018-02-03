@@ -31,12 +31,14 @@ class basePlatform:
         else:
             self.data = json.load(self.intialization_json)
         #scan transmitters
+        i=0
         for p in self.data['transmit_parameters']:
-            self.number_of_transmitters = p
+            i=i+1
+        self.number_of_transmitters = i
 
     def return_transmit_settings(self, setting):
         # try mechanism is missing
-        return self.data['transmit_parameters'][0][setting]
+        return self.data['transmit_parameters'][setting]
 
     def dutyCycleOn():
         #create dutyCycle calculation here
