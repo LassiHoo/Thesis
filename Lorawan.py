@@ -37,22 +37,22 @@ class loraWanPlatfom(basePlatform):
     def createLoraWanTransmitlist(self):
         #creating list
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.MacTx + self.unConf + self.portnr)
+        basePlatform.transmitterList.append(self.data['Lorawan_settings']['MacTx'] + self.self.data['Lorawan_settings']['unConf'] + self.self.data['Lorawan_settings']['portnr'])
         basePlatform.transmitterList.append(self.RLF)
 
 
     def createInitList(self):
         #creating init list
-        basePlatform.initList.append("sys factoryRESET" + self.RLF)
-        basePlatform.initList.append(self.data['factoryreset'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['RadioSet'] + self.data['prlen'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['RadioSet'] + self.data['sf8'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['MacSet'] + self.data['Appeui'] + self.data['Appeui_val'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['MacSet'] + self.data['Appkey'] + self.data['Appkey_val'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['MacSet'] + self.data['DevEui'] + self.data['DevEui_val']+ self.data['RLF'])
-        basePlatform.initList.append(self.data['MacSet'] + self.data['DevAddr'] + self.data['DevAddr_val'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['macSave'] + self.data['RLF'])
-        basePlatform.initList.append(self.data['JoinOTaa'])
+        basePlatform.initList.append(self.data['Lorawan_settings']["sys factoryRESET"] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['factoryreset'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['RadioSet'] + self.data['Lorawan_settings']['prlen'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['RadioSet'] + self.data['Lorawan_settings']['sf8'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['Appeui'] + self.data['Lorawan_settings']['Appeui_val'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['Appkey'] + self.data['Lorawan_settings']['Appkey_val'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['DevEui'] + self.data['Lorawan_settings']['DevEui_val']+ self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['DevAddr'] + self.data['Lorawan_settings']['DevAddr_val'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['macSave'] + self.data['Lorawan_settings']['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings']['JoinOTaa'])
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
@@ -86,16 +86,6 @@ class loraWanPlatfom(basePlatform):
             with open('data.txt', 'w') as self.initFileName:
                 json.dump(self.data, self.initFileName)
 
-    def createTransmitFile(self):
-        if not os.path.exists(self.transmitFileName):
-            self.data = {}
-            self.data['Lorawan_settings'] = []
-            self.data['Lorawan.settings'].append({
-                'Appeui': 'appeui BE7A000000000CDA',
-                'Appkey': 'appkey 660625ED5FC16D37B82A5A0E9042CF0B',
-            })
-            with open('data.txt', 'w') as self.transmitFileName:
-                json.dump(self.data, self.transmitFileName)
 
 class LoraWan():
 
@@ -115,7 +105,6 @@ class LoraWan():
                                    timeout=1)
 
         # create transmit and initializaiotn files if they do not exists
-        self.__platForm.createTransmitFile()
         self.__platForm.createInitializationFile()
 
         self.__transmitcommands = self.__init.readfile(self.__platForm.transmitFileName)
