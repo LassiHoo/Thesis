@@ -3,7 +3,6 @@ from BasePlatform import basePlatform
 from tcp_ip import ssh_connection
 import time
 import os
-import pickle
 import json
 
 class loraWanPlatfom(basePlatform):
@@ -14,7 +13,7 @@ class loraWanPlatfom(basePlatform):
     TX_COMMAND = 0
     LINE_FEED = 1
     initFileName = "LPWAinitfile.jso"
-    transmitFileName = "LPWATransmitfile.jso"
+    transmitFileName = "Txfile.jso"
     def __init__(self):
         if not os.path.exists(self.transmitFileName):
             # if file does not exists create a one

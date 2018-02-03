@@ -40,8 +40,6 @@ class basePlatform:
         else:
             self.data = json.load(self.initialization_json)
 
-        self.number_of_transmitters = len(self.data)
-
     def return_transmit_settings(self, transmitId):
         # try mechanism is missing
         transmitters=[]
