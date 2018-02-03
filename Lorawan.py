@@ -37,7 +37,7 @@ class loraWanPlatfom(basePlatform):
     def createLoraWanTransmitlist(self):
         #creating list
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0][0]['MacTx'] + self.self.data['Lorawan_settings'][0][0]['unConf'] + self.self.data['Lorawan_settings'][0][0]['portnr'])
+        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0]['MacTx'] + self.self.data['Lorawan_settings'][0]['unConf'] + self.self.data['Lorawan_settings'][0]['portnr'])
         basePlatform.transmitterList.append(self.RLF)
 
 
