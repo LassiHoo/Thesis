@@ -97,8 +97,9 @@ class LoraWan():
         self.ssh = ssh_connection()
 
     def transmit(self,string):
-        print(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED] + "\n")
-        self.__loraWanCom.write(self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED])
+        txdata = self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED]
+        print(txdata)
+        self.__loraWanCom.write(txdata.encode())
     def initInterface(self):
         for i in self.__initcommands:
             time.sleep(4)
