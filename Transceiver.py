@@ -15,7 +15,7 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
     print("thread started transmitter settings ", transmit_settings)
     pi = 0
     # while True:
-    # 
+    #
     #      dec = (int(pi)*transmit_settings.return_transmit_settings('interval_decrement_milliseconds'))
     #      if dec > transmit_settings.return_transmit_settings('send_interval_milliseconds'):
     #          pi = 0
@@ -48,7 +48,7 @@ def main():
     lpwa_interface.initInterface()
     threads = [threading.Thread(target=transmit_thread_function, args=[f,lpwa_interface]) for f in transmit_settings.data]
     for thread in threads:
-        print(" Starting transmitter thread: ", thread.name() )
+        print(" Starting transmitter thread: ", thread.getName() )
         thread.start()
 
 if __name__ == "__main__":
