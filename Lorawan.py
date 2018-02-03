@@ -4,39 +4,38 @@ from tcp_ip import ssh_connection
 import time
 import os
 import pickle
-
+import json
 
 class loraWanPlatfom(basePlatform):
     #these are LoraWan end node related configuration  and TX instruction set
-    RadioSet = "radio set "
-    MacSet = "mac set "
-    MacTx = "mac tx "
-    Conf = "cnf "
-    unConf = "uncnf "
-    prlen= "prlen 16"
-    sf8 = "sf sf8"
-    portnr = "1 "
-    Appeui = "appeui BE7A000000000CDA"
-    Appkey = "appkey 660625ED5FC16D37B82A5A0E9042CF0B"
-    DevEui = "deveui 0004A30B001F3A95"
-    macSave = "mac save"
-    JoinOTaa = "mac join otaa\r\n"
-    RLF = "\r\n"
-    START_TIME = 0
-    SEND_INTERVAL = 1
-    SEND_COUNT = 2
-    PAYLOAD_LENGHT = 3
-    TX_COMMAND = 4
-    LINE_FEED = 5
-    initFileName = "LPWAinitfile.dat"
-    transmitFileName = "LPWATransmitfile.dat"
+
+
+
+    TX_COMMAND = 0
+    LINE_FEED = 1
+    initFileName = "LPWAinitfile.json"
+    transmitFileName = "LPWATransmitfile.json"
+    def __init__(self):
+        if not os.path.exists(self.initialization_json):
+            #if file does not exists create a one
+            self.data = {}
+            self.data['transmit_parameters'] = []
+            self.data['transmit_parameters'].append({
+                'start_time': 'none',
+                'send_interval_milliseconds': 8000,
+                'send_count': 10000,
+                'send_forever': 'true',
+                'status': 'waitin_to_start',
+                'interval_decrement_milliseconds': 100,
+                'data_content': 'from_diagnostic_frame'
+            })
+            with open('data.txt', 'w') as self.initialization_json:
+                json.dump(self.data, self.initialization_json)
+        else:
+            self.data = json.load(self.intialization_json)
 
     def createLoraWanTransmitlist(self):
         #creating list
-        basePlatform.transmitterList.append(basePlatform.startTime)
-        basePlatform.transmitterList.append(basePlatform.sendInterval)
-        basePlatform.transmitterList.append(basePlatform.sendCount)
-        basePlatform.transmitterList.append(basePlatform.payLoadLenght)
         # isolate these two into another list
         basePlatform.transmitterList.append(self.MacTx + self.unConf + self.portnr)
         basePlatform.transmitterList.append(self.RLF)
@@ -45,29 +44,58 @@ class loraWanPlatfom(basePlatform):
     def createInitList(self):
         #creating init list
         basePlatform.initList.append("sys factoryRESET" + self.RLF)
-        basePlatform.initList.append(self.RadioSet + self.prlen + self.RLF)
-        basePlatform.initList.append(self.RadioSet + self.sf8 + self.RLF)
-        basePlatform.initList.append(self.MacSet + self.Appeui + self.RLF)
-        basePlatform.initList.append(self.macSave + self.RLF)
-        basePlatform.initList.append(self.MacSet + self.Appkey + self.RLF)
-        basePlatform.initList.append(self.macSave + self.RLF)
-        basePlatform.initList.append(self.MacSet + self.DevEui + self.RLF)
-        basePlatform.initList.append(self.macSave + self.RLF)
-        basePlatform.initList.append(self.JoinOTaa)
+        basePlatform.initList.append(self.data['factoryreset'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['RadioSet'] + self.data['prlen'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['RadioSet'] + self.data['sf8'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['MacSet'] + self.data['Appeui'] + self.data['Appeui_val'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['MacSet'] + self.data['Appkey'] + self.data['Appkey_val'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['MacSet'] + self.data['DevEui'] + self.data['DevEui_val']+ self.data['RLF'])
+        basePlatform.initList.append(self.data['MacSet'] + self.data['DevAddr'] + self.data['DevAddr_val'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['macSave'] + self.data['RLF'])
+        basePlatform.initList.append(self.data['JoinOTaa'])
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):
-            self.createInitList()
-            source = open(self.initFileName,"wb")
-            pickle.dump(basePlatform.initList, source)
-            source.close()
+            # if file does not exists create a one
+            self.data = {}
+            self.data['Lorawan_settings'] = []
+            self.data['Lorawan.settings'].append({
+                'Appeui': 'appeui ',
+                'Appeui_val' : 'BE7A000000000CDA',
+                'Appkey': 'appkey ',
+                'Appkey_val': '660625ED5FC16D37B82A5A0E9042CF0B',
+                'DevEui': 'deveui ',
+                'DevEui_val':'0004A30B001F3A95',
+                'DevAddr': 'devaddr ',
+                'DevAddr_val':'1',
+                'macSave': 'mac save',
+                'JoinOTaa': 'mac join otaa\r\n',
+                'data_content': 'from_diagnostic_frame',
+                'RLF': '\r\n',
+                'RadioSet': 'radio set ',
+                'portnr': '1 ',
+                'MacSet' : 'mac set ',
+                'SysSet': 'sys set',
+                'MacTx': 'mac tx ',
+                'Conf' : 'cnf ',
+                'unConf' : 'uncnf ',
+                'prlen' : 'prlen 16',
+                'sf8' : 'sf sf8',
+                'factoryreset':'sys factoryRESET'
+            })
+            with open('data.txt', 'w') as self.initFileName:
+                json.dump(self.data, self.initFileName)
 
     def createTransmitFile(self):
         if not os.path.exists(self.transmitFileName):
-            self.createLoraWanTransmitlist()
-            source = open(self.transmitFileName,"wb")
-            pickle.dump(basePlatform.transmitterList, source)
-            source.close()
+            self.data = {}
+            self.data['Lorawan_settings'] = []
+            self.data['Lorawan.settings'].append({
+                'Appeui': 'appeui BE7A000000000CDA',
+                'Appkey': 'appkey 660625ED5FC16D37B82A5A0E9042CF0B',
+            })
+            with open('data.txt', 'w') as self.transmitFileName:
+                json.dump(self.data, self.transmitFileName)
 
 class LoraWan():
 
