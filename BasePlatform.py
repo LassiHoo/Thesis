@@ -38,7 +38,7 @@ class basePlatform:
             with open(self.initialization_json, 'w') as outfile:
                 json.dump(self.data, outfile)
         else:
-            self.data = json.load(self.intialization_json)
+            self.data = json.load(self.initialization_json)
 
         self.number_of_transmitters = len(self.data)
 
