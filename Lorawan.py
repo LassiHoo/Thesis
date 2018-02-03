@@ -37,22 +37,22 @@ class loraWanPlatfom(basePlatform):
     def createLoraWanTransmitlist(self):
         #creating list
         # isolate these two into another list
-        basePlatform.transmitterList.append(self.data['Lorawan_settings']['MacTx'] + self.self.data['Lorawan_settings']['unConf'] + self.self.data['Lorawan_settings']['portnr'])
+        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0][0]['MacTx'] + self.self.data['Lorawan_settings'][0][0]['unConf'] + self.self.data['Lorawan_settings'][0][0]['portnr'])
         basePlatform.transmitterList.append(self.RLF)
 
 
     def createInitList(self):
         #creating init list
-        basePlatform.initList.append(self.data['Lorawan_settings']["sys factoryRESET"] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['factoryreset'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['RadioSet'] + self.data['Lorawan_settings']['prlen'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['RadioSet'] + self.data['Lorawan_settings']['sf8'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['Appeui'] + self.data['Lorawan_settings']['Appeui_val'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['Appkey'] + self.data['Lorawan_settings']['Appkey_val'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['DevEui'] + self.data['Lorawan_settings']['DevEui_val']+ self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['MacSet'] + self.data['Lorawan_settings']['DevAddr'] + self.data['Lorawan_settings']['DevAddr_val'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['macSave'] + self.data['Lorawan_settings']['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings']['JoinOTaa'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]["sys factoryRESET"] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['factoryreset'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['prlen'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['sf8'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appeui'] + self.data['Lorawan_settings'][0]['Appeui_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appkey'] + self.data['Lorawan_settings'][0]['Appkey_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevEui'] + self.data['Lorawan_settings'][0]['DevEui_val']+ self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevAddr'] + self.data['Lorawan_settings'][0]['DevAddr_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['macSave'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['JoinOTaa'])
 
     def createInitializationFile(self):
         if not os.path.exists(self.initFileName):

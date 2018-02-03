@@ -36,7 +36,7 @@ class basePlatform:
 
     def return_transmit_settings(self, setting):
         # try mechanism is missing
-        return self.data['transmit_parameters'][setting]
+        return self.data['transmit_parameters'][0][setting]
 
     def dutyCycleOn():
         #create dutyCycle calculation here
