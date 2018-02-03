@@ -42,13 +42,6 @@ class basePlatform:
                 self.data = json.load(infile)
 
 
-    def return_transmit_settings(self, transmitId):
-        # try mechanism is missing
-        transmitters=[]
-        for f in self.data:
-            transmitters = f
-        return transmitters
-
     def dutyCycleOn():
         #create dutyCycle calculation here
         return False

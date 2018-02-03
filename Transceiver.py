@@ -19,11 +19,11 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
         pi = 0
         while True:
             print("running  in thread")
-            dec = (int(pi)*transmit_settings.return_transmit_settings('interval_decrement_milliseconds'))
-            if dec > transmit_settings.return_transmit_settings('send_interval_milliseconds'):
+            dec = int(pi)*transmit_settings[0]['interval_decrement_milliseconds']
+            if dec > transmit_settings[0]['send_interval_milliseconds']:
                 pi = 0
                 dec = 0
-            sleep_time = transmit_settings.return_transmit_settings('send_interval_milliseconds' - dec)/1000.0
+            sleep_time = (transmit_settings[0]['send_interval_milliseconds'] - dec)/1000.0
             #sleep_time = (transmit_settings.sendInterval/1000.0)
             print("sleep time: ",sleep_time)
             time.sleep(sleep_time)
@@ -38,11 +38,10 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
             wapice_test_line_hex = add
             #transmit_log_file.addTxData(wapice_test_line_hex,total_milliseconds)
             #trdelay.append(total_milliseconds)
-            if transmit_settings.return_transmit_settings('data_content') == 'from_diagnostic_frame':
+            if transmit_settings[0]['data_content'] == 'from_diagnostic_frame':
                 lpwa_interface.transmit(frame_hex)
 
             pi = pi + 1
-
 
 def main():
 
