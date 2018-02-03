@@ -43,7 +43,6 @@ class loraWanPlatfom(basePlatform):
 
     def createInitList(self):
         #creating init list
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]["sys factoryRESET"] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['factoryreset'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['prlen'] + self.data['Lorawan_settings'][0]['RLF'])
         basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['sf8'] + self.data['Lorawan_settings'][0]['RLF'])
