@@ -59,7 +59,7 @@ class loraWanPlatfom(basePlatform):
             # if file does not exists create a one
             self.data = {}
             self.data['Lorawan_settings'] = []
-            self.data['Lorawan.settings'].append({
+            self.data['Lorawan_settings'].append({
                 'Appeui': 'appeui ',
                 'Appeui_val' : 'BE7A000000000CDA',
                 'Appkey': 'appkey ',
