@@ -16,7 +16,7 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
     if (transmit_settings[0]['start_time'] == 'dummy'):
         print("dummy detected")
     else:
-        # pi = 0
+        pi = 0
         while True:
             print("running  in thread")
             dec = (int(pi)*transmit_settings.return_transmit_settings('interval_decrement_milliseconds'))
