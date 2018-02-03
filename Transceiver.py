@@ -43,7 +43,7 @@ def main():
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
-    threads = [threading.Thread(target=func, args=[transmit_settings,lpwa_interface]) for func in transmit_settings.number_of_transmitters]
+    threads = [threading.Thread(target=transmit_thread_function, args=[f,lpwa_interface]) for f in transmit_settings.data]
     for thread in threads:
         print(" Starting transmitter thread: ", thread.name() )
         thread.start()
