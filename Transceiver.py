@@ -13,8 +13,9 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
 
 
     print("thread started transmitter settings ", transmit_settings)
-    if (transmit_settings[0]['start_time'] == 'dummy'):
-        print("dummy detected")
+    print(transmit_settings)
+    #if (transmit_settings[0]['start_time'] == 'dummy'):
+    #    print("dummy detected")
     pi = 0
     # while True:
     #
