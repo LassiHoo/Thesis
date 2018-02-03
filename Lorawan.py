@@ -66,7 +66,7 @@ class loraWanPlatfom(basePlatform):
                 'DevEui': 'deveui ',
                 'DevEui_val':'0004A30B001F3A95',
                 'DevAddr': 'devaddr ',
-                'DevAddr_val':'01',#in hexadecimal form
+                'DevAddr_val':'00000001',#in hexadecimal form
                 'macSave': 'mac save',
                 'JoinOTaa': 'mac join otaa\r\n',
                 'data_content': 'from_diagnostic_frame',
