@@ -16,45 +16,7 @@ class loraWanPlatfom(basePlatform):
     initFileName = "LPWAinitfile.jso"
     transmitFileName = "LPWATransmitfile.jso"
     def __init__(self):
-        if not os.path.exists(self.initialization_json):
-            #if file does not exists create a one
-            self.data = {}
-            self.data['transmit_parameters'] = []
-            self.data['transmit_parameters'].append({
-                'start_time': 'none',
-                'send_interval_milliseconds': 8000,
-                'send_count': 10000,
-                'send_forever': 'true',
-                'status': 'waitin_to_start',
-                'interval_decrement_milliseconds': 100,
-                'data_content': 'from_diagnostic_frame'
-            })
-            with open('data.txt', 'w') as self.initialization_json:
-                json.dump(self.data, self.initialization_json)
-        else:
-            self.data = json.load(self.intialization_json)
-
-    def createLoraWanTransmitlist(self):
-        #creating list
-        # isolate these two into another list
-        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0]['MacTx'] + self.data['Lorawan_settings'][0]['unConf'] + self.data['Lorawan_settings'][0]['portnr'])
-        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0]['RLF'])
-
-
-    def createInitList(self):
-        #creating init list
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['factoryreset'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['prlen'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['sf8'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appeui'] + self.data['Lorawan_settings'][0]['Appeui_val'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appkey'] + self.data['Lorawan_settings'][0]['Appkey_val'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevEui'] + self.data['Lorawan_settings'][0]['DevEui_val']+ self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevAddr'] + self.data['Lorawan_settings'][0]['DevAddr_val'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['macSave'] + self.data['Lorawan_settings'][0]['RLF'])
-        basePlatform.initList.append(self.data['Lorawan_settings'][0]['JoinOTaa'])
-
-    def createInitializationFile(self):
-        if not os.path.exists(self.initFileName):
+        if not os.path.exists(self.transmitFileName):
             # if file does not exists create a one
             self.data = {}
             self.data['Lorawan_settings'] = []
@@ -82,11 +44,29 @@ class loraWanPlatfom(basePlatform):
                 'sf8' : 'sf sf8',
                 'factoryreset':'sys factoryRESET'
             })
-            with open(self.initialization_json, 'w') as outfile:
+            with open(self.transmitFileName, 'w') as outfile:
                 json.dump(self.data, outfile)
         else:
-            self.data = json.load(self.initFileName)
+            self.data = json.load(self.transmitFileName)
 
+    def createLoraWanTransmitlist(self):
+        #creating list
+        # isolate these two into another list
+        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0]['MacTx'] + self.data['Lorawan_settings'][0]['unConf'] + self.data['Lorawan_settings'][0]['portnr'])
+        basePlatform.transmitterList.append(self.data['Lorawan_settings'][0]['RLF'])
+
+
+    def createInitList(self):
+        #creating init list
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['factoryreset'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['prlen'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['RadioSet'] + self.data['Lorawan_settings'][0]['sf8'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appeui'] + self.data['Lorawan_settings'][0]['Appeui_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['Appkey'] + self.data['Lorawan_settings'][0]['Appkey_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevEui'] + self.data['Lorawan_settings'][0]['DevEui_val']+ self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['MacSet'] + self.data['Lorawan_settings'][0]['DevAddr'] + self.data['Lorawan_settings'][0]['DevAddr_val'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['macSave'] + self.data['Lorawan_settings'][0]['RLF'])
+        basePlatform.initList.append(self.data['Lorawan_settings'][0]['JoinOTaa'])
 
 class LoraWan():
 
@@ -106,7 +86,6 @@ class LoraWan():
                                    timeout=1)
 
         # create transmit and initializaiotn files if they do not exists
-        self.__platForm.createInitializationFile()
         self.__platForm.createLoraWanTransmitlist()
         self.__platForm.createInitList()
         self.__transmitcommands = self.__init.transmitterList
