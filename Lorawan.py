@@ -103,5 +103,5 @@ class LoraWan():
         for i in self.__initcommands:
             time.sleep(4)
             print(i)
-            self.__loraWanCom.write(i)
+            self.__loraWanCom.write(i.encode())
         time.sleep(7)
