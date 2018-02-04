@@ -1,6 +1,6 @@
 import serial
 from BasePlatform import basePlatform
-from tcp_ip import ssh_connection
+#from tcp_ip import ssh_connection
 import time
 import os
 import json

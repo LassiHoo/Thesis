@@ -11,7 +11,6 @@ from Graph import graph
 pi = 0
 def transmit_thread_function(transmit_settings,lpwa_interface):
 
-
     print("thread started transmitter settings ")
     if (transmit_settings[0]['start_time'] == 'dummy'):
         print("dummy detected")
