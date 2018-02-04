@@ -19,7 +19,11 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
         if (transmit_settings[0]['send_forever']=='true'):
             while True:
                 print("running forever in thread")
-                pi = transmit(transmit_settings,pi, lpwa_interface)
+                if dec > transmit_settings[0]['send_interval_milliseconds']:
+                    pi = 0
+                else:
+                    pi = pi + 1
+                dec = transmit(transmit_settings,pi, lpwa_interface)
 
         else:
             for i in range(0, transmit_settings[0]['send_count']):
@@ -47,10 +51,7 @@ def transmit(transmit_settings, pi, lpwa_interface):
     #trdelay.append(total_milliseconds)
     if transmit_settings[0]['data_content'] == 'from_diagnostic_frame':
         lpwa_interface.transmit(frame_hex)
-    pi = pi + 1
-    if dec > transmit_settings[0]['send_interval_milliseconds']:
-        pi = 0
-    return pi
+    return dec
 
 def main():
 
