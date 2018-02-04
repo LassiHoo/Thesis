@@ -16,6 +16,7 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
         print("dummy detected")
     else:
         pi = 0
+        dec = 0
         if (transmit_settings[0]['send_forever']=='true'):
             while True:
                 print("running forever in thread")
