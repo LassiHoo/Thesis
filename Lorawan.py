@@ -94,7 +94,6 @@ class LoraWan():
         self.__initcommands = self.__init.initList
         for i in self.__initcommands:
             print (i)
-        self.ssh = ssh_connection()
 
     def transmit(self,string):
         txdata = self.__transmitcommands[loraWanPlatfom.TX_COMMAND] + string + self.__transmitcommands[loraWanPlatfom.LINE_FEED]
