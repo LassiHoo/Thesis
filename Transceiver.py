@@ -21,8 +21,8 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
             while True:
                 print("running forever in thread")
                 dec = transmit(transmit_settings, pi, lpwa_interface)
+                print("dec: ", dec, " send interval: ", transmit_settings[0]['send_interval_milliseconds'])
                 if dec > transmit_settings[0]['send_interval_milliseconds']:
-                    print("dec: ", dec, " send interval: ", transmit_settings[0]['send_interval_milliseconds'])
                     pi = 0
                 else:
                     pi = pi + 1
