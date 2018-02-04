@@ -51,6 +51,8 @@ def transmit(transmit_settings, pi, lpwa_interface):
     #trdelay.append(total_milliseconds)
     if transmit_settings[0]['data_content'] == 'from_diagnostic_frame':
         lpwa_interface.transmit(frame_hex)
+    else:
+        lpwa_interface.transmit(add)
     return dec
 
 def main():
