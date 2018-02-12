@@ -59,7 +59,7 @@ def transmit(transmit_settings, pi, lpwa_interface):
     return dec
 
 def main():
-
+    time.sleep(60)
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
