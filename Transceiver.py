@@ -66,6 +66,7 @@ def main():
     threads = [threading.Thread(target=transmit_thread_function, args=[transmit_settings.data[f],lpwa_interface]) for f in transmit_settings.data]
     for thread in threads:
         print(" Starting transmitter thread: ", thread.getName() )
+        thread.daemon
         thread.start()
 
 if __name__ == "__main__":
