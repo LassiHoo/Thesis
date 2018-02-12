@@ -68,6 +68,9 @@ def main():
         print(" Starting transmitter thread: ", thread.getName() )
         thread.daemon
         thread.start()
+    while True:
+        time.sleep(1)
+
 
 if __name__ == "__main__":
     main()
