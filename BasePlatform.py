@@ -41,6 +41,13 @@ class basePlatform:
             with open(self.initialization_json, 'r') as infile:
                 self.data = json.load(infile)
 
+    def reload_Json_data(self):
+        with open(self.initialization_json, 'r') as infile:
+            self.data = json.load(infile)
+
+    def store_Json_data(self):
+        with open(self.initialization_json, 'r') as outfile:
+            self.data = json.dump(outfile)
 
     def dutyCycleOn():
         #create dutyCycle calculation here

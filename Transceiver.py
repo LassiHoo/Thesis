@@ -33,6 +33,10 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
                 print("running in thread, transmission counts left" , ( transmit_settings[0]['send_count'] - i ) )
                 transmit(transmit_settings, i ,lpwa_interface)
 
+def update_thread_list(transmit_settings):
+    transmit_settings.reload_Json_data()
+    time.sleep(60)
+
 
 def transmit(transmit_settings, pi, lpwa_interface):
 
@@ -59,18 +63,25 @@ def transmit(transmit_settings, pi, lpwa_interface):
     return dec
 
 def main():
-    time.sleep(60)
+    started_list=[]
     transmit_settings = basePlatform()
     lpwa_interface = LoraWan()
     lpwa_interface.initInterface()
-    threads = [threading.Thread(target=transmit_thread_function, args=[transmit_settings.data[f],lpwa_interface]) for f in transmit_settings.data]
-    for thread in threads:
-        print(" Starting transmitter thread: ", thread.getName() )
-        thread.daemon
-        thread.start()
+
+    update_transmit_thread = threading.Thread(target=update_thread_list, args=[transmit_settings])
+    update_transmit_thread.daemon
+    update_transmit_thread.start()
+
     while True:
         time.sleep(1)
-
+        for f in transmit_settings.data:
+            if ( time.time() > transmit_settings[f]['start_time'] ) and ( transmit_settings[f]['status'] == 'waitin_to_start'):
+                thread_start = threading.Thread(target=transmit_thread_function, args=[transmit_settings.data[f], lpwa_interface])
+                print(" Starting transmitter thread: ", thread_start.getName())
+                thread_start.daemon
+                thread_start.start()
+                transmit_settings[f]['status'] = 'on'
+                transmit_settings.store_Json_data()
 
 if __name__ == "__main__":
     main()
