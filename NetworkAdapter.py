@@ -3,12 +3,14 @@ from iotticket.models import device
 from iotticket.models import deviceattribute
 from iotticket.models import datanodesvalue
 from iotticket.client import Client
+from file_handler import file_hander
 
 import datetime
 from time import time
 import json
 import string
 from ResultCalculator import result_calculator
+from file_handler import file_hander
 
 class network_adapter:
 
@@ -25,6 +27,8 @@ class network_adapter:
 
 
     def __init__(self):
+        self.gateway_delay_logfile=file_hander("gateway_delay.dat", 200)
+        self.network_delay_logfile = file_hander("network_delay.dat", 200)
         self.c = Client(self.baseurl, self.username, self.password)
         print ("network adapter initialized: " + str(self.c))
         self.dev= self.create_device()
@@ -96,15 +100,20 @@ class network_adapter:
         nv.set_timestamp(timeStamp)
 
         gateway_delay = result['gatewaydelay']
+        if not self.gateway_delay_logfile.addTxData(gateway_delay):
+            self.gateway_delay_logfile.strore_data()
         float_gvd = float(gateway_delay)
         nv1 = datanodesvalue()
         nv1.set_name("Gateway delay")
         nv1.set_path(iot_id)
         nv1.set_dataType("double")
         nv1.set_value(float_gvd)
+
         nv1.set_timestamp(timeStamp)
 
         network_delay = result['networkdelay']
+        if not self.network_delay_logfile.addTxData(network_delay):
+            self.network_delay_logfile.strore_data()
         float_nvd = float(network_delay)
         nv2 = datanodesvalue()
         nv2.set_name("Network delay")

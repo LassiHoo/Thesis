@@ -6,13 +6,20 @@ import csv
 
 class file_hander:
 
-    def __init__(self, transmitterfilename):
+    def __init__(self, transmitterfilename, samplecount):
         self.transmitDataList=[]
         self.transmitterFileName = transmitterfilename
         self.csv_filename=[]
-    def addTxData(self,data,timestamp):
-        tuple = timestamp,data
-        self.transmitDataList.append(tuple)
+        self.sample_count = 0
+        self.num_of_samples = samplecount
+
+    def addTxData(self, data):
+        self.transmitDataList.append(data)
+        self.sample_count = self.sample_count + 1
+        if self.sample_count == self.num_of_samples:
+            return False
+        else:
+            return True
 
     def strore_data(self):
         source = open(self.transmitterFileName,"wb")
