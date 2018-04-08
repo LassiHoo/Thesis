@@ -1,10 +1,16 @@
 #import numpy as np
 import datetime
+import math
+from file_handler import file_hander
 
 class result_calculator:
 
 
-    def __init__(self):
+    def __init__(self, id):
+        gateway_filename = "gateway_delay" + id + ".dat"
+        network_filename = "network_delay" + id + ".dat"
+        self.gateway_delay_logfile=file_hander(gateway_filename, 200)
+        self.network_delay_logfile = file_hander(network_filename, 200)
         self.per_counter = 0
         self.error_counter = 0
         self.meas_counter = 0
@@ -83,6 +89,10 @@ class result_calculator:
         # print("end node delay in milliseconds", end_node_delay)
         self.data['gatewaydelay'] = gateway_server_delay - end_node_delay
         self.data['networkdelay'] = network_server_delay - end_node_delay
+        if not self.network_delay_logfile.addTxData(self.data['networkdelay']):
+            self.network_delay_logfile.strore_data()
+        if not self.gateway_delay_logfile.addTxData(self.data['gatewaydelay']):
+            self.gateway_delay_logfile.strore_data()
         self.data['per'] = self.per_calculator(input[2])
         self.data['interval'] = input[3]
         self.data['measinterval'] = measured_time_interval
@@ -91,5 +101,20 @@ class result_calculator:
         #self.gateway_cdf_result_buffer=self.cdf_calculation(self.gateway_cdf_buffer)
         #self.network_cdf_buffer.append(self.data['result']['networkdelay'])
         #self.network_cdf_result_buffer=self.cdf_calculation( self.network_cdf_buffer )
-
         return self.data
+
+    def calc_ref_delay(self):
+
+        sf = 1
+        bw = 1
+        de = 1
+        CR = 1
+        PL = 1
+        H=1
+        n_preample = 1
+        tsym=(2*sf)/bw
+        Tpreample = (n_preample + 4.25)*tsym
+        symbolcount = 8 + max(math.ceil((8 * PL + 4*sf + 28 + 16 - 20*H)/(4*sf - 2*de))*(CR + 4),0)
+        T_payload = symbolcount * tsym
+        total = T_payload + Tpreample
+        return total

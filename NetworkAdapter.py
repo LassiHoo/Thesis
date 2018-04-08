@@ -10,7 +10,7 @@ from time import time
 import json
 import string
 from ResultCalculator import result_calculator
-from file_handler import file_hander
+
 
 class network_adapter:
 
@@ -27,14 +27,15 @@ class network_adapter:
 
 
     def __init__(self):
-        self.gateway_delay_logfile=file_hander("gateway_delay.dat", 200)
-        self.network_delay_logfile = file_hander("network_delay.dat", 200)
         self.c = Client(self.baseurl, self.username, self.password)
         print ("network adapter initialized: " + str(self.c))
         self.dev= self.create_device()
-        self.dev1_result_calculator = result_calculator()
-        self.dev2_result_calculator = result_calculator()
-        self.dev3_result_calculator = result_calculator()
+        self.dev1 = "0004A30B001F3A96"
+        self.dev2 = "BE7A000000001FF8"
+        self.dev3 = "0004A30B001F3A95"
+        self.dev1_result_calculator = result_calculator(self.dev1)
+        self.dev2_result_calculator = result_calculator(self.dev2)
+        self.dev3_result_calculator = result_calculator(self.dev3)
         self.dev1 = "0004A30B001F3A96"
         self.dev2 = "BE7A000000001FF8"
         self.dev3 = "0004A30B001F3A95"
@@ -100,8 +101,6 @@ class network_adapter:
         nv.set_timestamp(timeStamp)
 
         gateway_delay = result['gatewaydelay']
-        if not self.gateway_delay_logfile.addTxData(gateway_delay):
-            self.gateway_delay_logfile.strore_data()
         float_gvd = float(gateway_delay)
         nv1 = datanodesvalue()
         nv1.set_name("Gateway delay")
@@ -112,8 +111,6 @@ class network_adapter:
         nv1.set_timestamp(timeStamp)
 
         network_delay = result['networkdelay']
-        if not self.network_delay_logfile.addTxData(network_delay):
-            self.network_delay_logfile.strore_data()
         float_nvd = float(network_delay)
         nv2 = datanodesvalue()
         nv2.set_name("Network delay")

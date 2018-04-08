@@ -9,7 +9,7 @@ def main():
     data=file_hander.read_file(file_name)
     data1 = file_hander.read_file(file_name)
     ccdf_graph.ccdf(data,data1,sys.argv[2],sys.argv[4])
-    
+
 
 if __name__ == "__main__":
     main()
