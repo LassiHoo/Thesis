@@ -7,10 +7,12 @@ class result_calculator:
 
 
     def __init__(self, id):
-        gateway_filename = "gateway_delay" + id + ".dat"
-        network_filename = "network_delay" + id + ".dat"
-        self.gateway_delay_logfile=file_hander(gateway_filename, 200)
-        self.network_delay_logfile = file_hander(network_filename, 200)
+        gateway_filename = "gateway_delay_" + id + ".dat"
+        network_filename = "network_delay_" + id + ".dat"
+        availability_filename = "availability_delay_" + id + ".dat"
+        self.gateway_delay_logfile=file_hander(gateway_filename, 1000)
+        self.network_delay_logfile = file_hander(network_filename, 1000)
+        self.availability_delay_logfile = file_hander(availability_filename, 1000)
         self.per_counter = 0
         self.error_counter = 0
         self.meas_counter = 0
@@ -93,14 +95,12 @@ class result_calculator:
             self.network_delay_logfile.strore_data()
         if not self.gateway_delay_logfile.addTxData(self.data['gatewaydelay']):
             self.gateway_delay_logfile.strore_data()
+        if not self.availability_delay_logfile.addTxData(input[3]):
+            self.availability_delay_logfile.strore_data()
         self.data['per'] = self.per_calculator(input[2])
         self.data['interval'] = input[3]
         self.data['measinterval'] = measured_time_interval
         self.data['interval_ms'] = input[3] * 1000
-        #self.gateway_cdf_buffer.append(self.data['result']['gatewaydelay'])
-        #self.gateway_cdf_result_buffer=self.cdf_calculation(self.gateway_cdf_buffer)
-        #self.network_cdf_buffer.append(self.data['result']['networkdelay'])
-        #self.network_cdf_result_buffer=self.cdf_calculation( self.network_cdf_buffer )
         return self.data
 
     def calc_ref_delay(self):
@@ -118,3 +118,4 @@ class result_calculator:
         T_payload = symbolcount * tsym
         total = T_payload + Tpreample
         return total
+

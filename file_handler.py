@@ -26,9 +26,9 @@ class file_hander:
         pickle.dump(self.transmitDataList, source)
         source.close()
 
-    def read_file(self, filename):
+    def read_file(self):
         try:
-            file = open(filename, "rb")
+            file = open(self.transmitterFileName, "rb")
             read = pickle.load(file)
             return read
         except IOError:

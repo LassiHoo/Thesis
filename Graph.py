@@ -10,7 +10,7 @@ class graph:
     def __init__(self):
         plotly.tools.set_credentials_file(username='LassiPee', api_key='qNE4nDymb62oYrcqhegQ')
 
-    def ccdf(self, datain, datain2, name1, name2):
+    def cdf(self, datain, datain2, name1, name2):
         #
         # cumsum = np.cumsum(datain)
         #
@@ -46,8 +46,8 @@ class graph:
 
         fig.append_trace(trace2, 1, 1)
         fig.append_trace(trace1, 2, 1)
-        fig['layout'].update(height=600, width=600, title='CCDF curves')
-        py.plot(fig, filename='ccdf')
+        fig['layout'].update(height=600, width=600, title='CDF curves')
+        py.plot(fig, filename='cdf')
 
     def plot(self, x, y1, y2, y3, y4, y5, y1_name, y2_name, y3_name, y4_name, y5_name):
 
