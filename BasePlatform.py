@@ -18,21 +18,21 @@ class basePlatform:
             self.data['transmit_parameters'] = []
             self.data['transmit_parameters1'] = []
             self.data['transmit_parameters'].append({
-                'start_time': 'none',
+                'start_time': 1523375100.3362799,
                 'send_interval_milliseconds': 8000,
-                'send_count': 10000,
-                'send_forever': 'true',
+                'send_count': 5,
+                'send_forever': 'false',
                 'status': 'waitin_to_start',
-                'interval_decrement_milliseconds': 100,
+                'interval_decrement_milliseconds': 0,
                 'data_content': 'from_diagnostic_frame'
             })
             self.data['transmit_parameters1'].append({
-                'start_time': 'dummy',
-                'send_interval_milliseconds': 8000,
-                'send_count': 10000,
-                'send_forever': 'true',
+                'start_time': 1523379699.663146,
+                'send_interval_milliseconds': 1000,
+                'send_count': 10,
+                'send_forever': 'false',
                 'status': 'waitin_to_start',
-                'interval_decrement_milliseconds': 100,
+                'interval_decrement_milliseconds': 0,
                 'data_content': 'from_diagnostic_frame'
             })
             with open(self.initialization_json, 'w') as outfile:
@@ -46,9 +46,5 @@ class basePlatform:
             self.data = json.load(infile)
 
     def store_Json_data(self):
-        with open(self.initialization_json, 'r') as outfile:
-            self.data = json.dump(outfile)
-
-    def dutyCycleOn():
-        #create dutyCycle calculation here
-        return False
+        with open(self.initialization_json, 'w') as outfile:
+            self.data = json.dump(self.data,outfile)

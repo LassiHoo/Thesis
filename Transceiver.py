@@ -34,8 +34,10 @@ def transmit_thread_function(transmit_settings,lpwa_interface):
                 transmit(transmit_settings, i ,lpwa_interface)
 
 def update_thread_list(transmit_settings):
-    transmit_settings.reload_Json_data()
-    time.sleep(60)
+    while 1:
+        print("updating transmit Json data")
+        transmit_settings.reload_Json_data()
+        time.sleep(60)
 
 
 def transmit(transmit_settings, pi, lpwa_interface):
@@ -75,12 +77,13 @@ def main():
     while True:
         time.sleep(1)
         for f in transmit_settings.data:
-            if ( time.time() > transmit_settings[f]['start_time'] ) and ( transmit_settings[f]['status'] == 'waitin_to_start'):
+            if ( time.time() > transmit_settings.data[f][0]['start_time'] ) and ( transmit_settings.data[f][0]['status'] == 'waitin_to_start'):
                 thread_start = threading.Thread(target=transmit_thread_function, args=[transmit_settings.data[f], lpwa_interface])
                 print(" Starting transmitter thread: ", thread_start.getName())
                 thread_start.daemon
                 thread_start.start()
-                transmit_settings[f]['status'] = 'on'
+                print("start time: ", transmit_settings.data[f][0]['start_time'])
+                transmit_settings.data[f][0]['status'] = 'on'
                 transmit_settings.store_Json_data()
 
 if __name__ == "__main__":
