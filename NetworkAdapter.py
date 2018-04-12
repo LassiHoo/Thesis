@@ -155,6 +155,15 @@ class network_adapter:
         nv6.set_value(float_interval_ms)
         nv6.set_timestamp(timeStamp)
 
+        snr = data["gws"][0]
+        float_snr = float(snr["snr"])
+        nv7 = datanodesvalue()
+        nv7.set_name("snr")
+        nv7.set_path(iot_id)
+        nv7.set_dataType("double")
+        nv7.set_value(float_snr)
+        nv7.set_timestamp(timeStamp)
+
         c = Client(self.baseurl, self.username, self.password)
 
-        print(c.writedata(self.dev_iot_id, nv, nv1,nv2, nv3, nv4, nv5, nv6 ))
+        print(c.writedata(self.dev_iot_id, nv, nv1,nv2, nv3, nv4, nv5, nv6, nv7 ))

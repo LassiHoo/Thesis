@@ -20,19 +20,19 @@ class basePlatform:
             self.data['transmit_parameters'].append({
                 'start_time': 1523375100.3362799,
                 'send_interval_milliseconds': 8000,
-                'send_count': 5,
-                'send_forever': 'false',
+                'send_count': 10000,
+                'send_forever': 'true',
                 'status': 'waitin_to_start',
-                'interval_decrement_milliseconds': 0,
+                'interval_decrement_milliseconds': 100,
                 'data_content': 'from_diagnostic_frame'
             })
             self.data['transmit_parameters1'].append({
-                'start_time': 1523379699.663146,
-                'send_interval_milliseconds': 1000,
-                'send_count': 10,
-                'send_forever': 'false',
+                'start_time': 5523375100.3362799,
+                'send_interval_milliseconds': 8000,
+                'send_count': 10000,
+                'send_forever': 'true',
                 'status': 'waitin_to_start',
-                'interval_decrement_milliseconds': 0,
+                'interval_decrement_milliseconds': 100,
                 'data_content': 'from_diagnostic_frame'
             })
             with open(self.initialization_json, 'w') as outfile:
@@ -47,4 +47,4 @@ class basePlatform:
 
     def store_Json_data(self):
         with open(self.initialization_json, 'w') as outfile:
-            self.data = json.dump(self.data,outfile)
+            json.dump(self.data,outfile)

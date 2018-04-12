@@ -20,7 +20,7 @@ class result_calculator:
         self.gateway_cdf_buffer=[]
         self.network_cdf_buffer = []
         self.previous_time_stamp=0
-        self.MEASUREMENT_INTERVAL = 10
+        self.MEASUREMENT_INTERVAL = 2
         self.CDF_MEASUREMENT_INTERVAL = 100
         self.network_delay=0
         self.gateway_delay=0
